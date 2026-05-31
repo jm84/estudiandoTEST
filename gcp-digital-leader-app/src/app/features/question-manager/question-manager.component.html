@@ -1,0 +1,118 @@
+<!-- Tabla de preguntas -->
+<section class="card table-card">
+  <div class="card-header">
+    <h2>Banco de preguntas ({{ questions().length }})</h2>
+    <div class="json-actions">
+      <button type="button" class="secondary" (click)="exportJson()">⬇ Exportar JSON</button>
+      <label class="import-btn">
+        ⬆ Importar JSON
+        <input type="file" accept=".json" (change)="importJson($event)" hidden />
+      </label>
+    </div>
+  </div>
+
+  @if (questions().length === 0) {
+    <p class="empty">No hay preguntas cargadas aún.</p>
+  } @else {
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-num">#</th>
+            <th class="col-topic">Tema</th>
+            <th class="col-prompt">Pregunta</th>
+            <th class="col-a">A</th>
+            <th class="col-b">B</th>
+            <th class="col-c">C</th>
+            <th class="col-d">D</th>
+            <th class="col-correct">✓</th>
+            <th class="col-actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (q of questions(); track q.id; let i = $index) {
+            <tr [class.row-editing]="editingId() === q.id">
+              <td class="col-num">{{ i + 1 }}</td>
+              <td class="col-topic"><span class="badge">{{ q.topic }}</span></td>
+              <td class="col-prompt" [title]="q.prompt">{{ q.prompt }}</td>
+              <td class="col-opt" [title]="optionText(q, 'A')">{{ optionText(q, 'A') }}</td>
+              <td class="col-opt" [title]="optionText(q, 'B')">{{ optionText(q, 'B') }}</td>
+              <td class="col-opt" [title]="optionText(q, 'C')">{{ optionText(q, 'C') }}</td>
+              <td class="col-opt" [title]="optionText(q, 'D')">{{ optionText(q, 'D') }}</td>
+              <td class="col-correct">
+                <span class="correct-badge">{{ q.correctOptionId.split('-').at(-1) }}</span>
+              </td>
+              <td class="col-actions">
+                <button type="button" class="btn-edit" (click)="edit(q)" title="Editar">✏</button>
+                <button type="button" class="btn-del" (click)="remove(q.id)" title="Eliminar">✕</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>
+
+<!-- Formulario de edición / nueva pregunta -->
+<section class="card form-card" id="edit-form">
+  <h2>{{ isEditing() ? 'Editando pregunta #' + (questions().findIndex(q => q.id === editingId()) + 1) : 'Nueva pregunta' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-row">
+      <label class="grow">
+        Tema
+        <input formControlName="topic" [class.invalid]="isTouched('topic')" />
+        @if (isTouched('topic')) { <span class="error">Requerido (mín. 3 caracteres)</span> }
+      </label>
+    </div>
+
+    <label>
+      Pregunta
+      <textarea formControlName="prompt" [class.invalid]="isTouched('prompt')"></textarea>
+      @if (isTouched('prompt')) { <span class="error">Requerido (mín. 10 caracteres)</span> }
+    </label>
+
+    <div class="grid">
+      <label>A <input formControlName="optionA" [class.invalid]="isTouched('optionA')" />
+        @if (isTouched('optionA')) { <span class="error">Requerido</span> }
+      </label>
+      <label>B <input formControlName="optionB" [class.invalid]="isTouched('optionB')" />
+        @if (isTouched('optionB')) { <span class="error">Requerido</span> }
+      </label>
+      <label>C <input formControlName="optionC" [class.invalid]="isTouched('optionC')" />
+        @if (isTouched('optionC')) { <span class="error">Requerido</span> }
+      </label>
+      <label>D <input formControlName="optionD" [class.invalid]="isTouched('optionD')" />
+        @if (isTouched('optionD')) { <span class="error">Requerido</span> }
+      </label>
+    </div>
+
+    <label class="inline">
+      Alternativa correcta
+      <select formControlName="correctOptionLabel">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </label>
+
+    <label>
+      Justificación (¿por qué es correcta?)
+      <textarea formControlName="justification" [class.invalid]="isTouched('justification')"></textarea>
+      @if (isTouched('justification')) { <span class="error">Requerido (mín. 10 caracteres)</span> }
+    </label>
+
+    <label>
+      Ayuda cuando responde mal
+      <textarea formControlName="studyTip" [class.invalid]="isTouched('studyTip')"></textarea>
+      @if (isTouched('studyTip')) { <span class="error">Requerido (mín. 10 caracteres)</span> }
+    </label>
+
+    <div class="actions">
+      <button type="submit">{{ isEditing() ? 'Guardar cambios' : 'Crear pregunta' }}</button>
+      <button type="button" class="secondary" (click)="resetForm()">Cancelar</button>
+    </div>
+  </form>
+</section>

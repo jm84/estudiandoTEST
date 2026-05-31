@@ -1,0 +1,229 @@
+/* ── Layout general ─────────────────────── */
+.table-card,
+.form-card {
+  background: #fff;
+  border: 1px solid #d5dbe6;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+/* ── Header con acciones JSON ───────────── */
+.card-header {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.card-header h2 {
+  margin: 0;
+}
+
+.json-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ── Tabla ──────────────────────────────── */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 900px;
+  width: 100%;
+}
+
+thead tr {
+  background: #e8f0fe;
+}
+
+th {
+  color: #0d47a1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  border-bottom: 1px solid #eceff1;
+  color: #263238;
+  padding: 0.45rem 0.6rem;
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #f5f7ff;
+}
+
+tbody tr.row-editing {
+  background: #e8f0fe;
+}
+
+/* Anchos de columnas */
+.col-num    { color: #90a4ae; font-size: 0.75rem; width: 2rem; }
+.col-topic  { width: 9rem; }
+.col-prompt { max-width: 220px; }
+.col-opt    { max-width: 120px; }
+.col-correct { text-align: center; width: 2.5rem; }
+.col-actions { white-space: nowrap; width: 5rem; }
+
+/* Celdas truncadas con tooltip nativo */
+.col-prompt,
+.col-opt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge {
+  background: #e3f2fd;
+  border-radius: 0.8rem;
+  color: #0d47a1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
+}
+
+.correct-badge {
+  background: #0d47a1;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  width: 1.4rem;
+}
+
+.btn-edit,
+.btn-del {
+  border: none;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.45rem;
+}
+
+.btn-edit {
+  background: #e8f0fe;
+  color: #0d47a1;
+}
+
+.btn-del {
+  background: #ffebee;
+  color: #c62828;
+  margin-left: 0.25rem;
+}
+
+.btn-edit:hover { background: #c5d8fc; }
+.btn-del:hover  { background: #ffcdd2; }
+
+/* ── Formulario ─────────────────────────── */
+.form-card {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.form-card h2 {
+  margin: 0;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  color: #263238;
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 0.3rem;
+}
+
+label.inline {
+  align-items: center;
+  grid-template-columns: max-content 1fr;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.grow { flex: 1; }
+
+input,
+textarea,
+select {
+  border: 1px solid #b0bec5;
+  border-radius: 0.4rem;
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+}
+
+textarea { min-height: 70px; }
+
+.grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input.invalid,
+textarea.invalid { border-color: #c62828; }
+
+.error {
+  color: #c62828;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+/* ── Botones ────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+button {
+  background: #0d47a1;
+  border: none;
+  border-radius: 0.45rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+button.secondary { background: #455a64; }
+
+.import-btn {
+  background: #455a64;
+  border-radius: 0.45rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+}
+
+.empty {
+  color: #90a4ae;
+  padding: 1rem 0;
+  text-align: center;
+}

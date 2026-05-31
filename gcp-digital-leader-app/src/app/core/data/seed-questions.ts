@@ -1,0 +1,46 @@
+import { Question } from '../models/question.model';
+
+export const SEED_QUESTIONS: Question[] = [
+  {
+    id: 'q1',
+    topic: 'Shared Responsibility',
+    prompt: '¿Qué tarea es responsabilidad del cliente en Google Cloud?',
+    options: [
+      { id: 'q1-A', text: 'Mantener el cableado físico del datacenter' },
+      { id: 'q1-B', text: 'Configurar identidades y permisos (IAM)' },
+      { id: 'q1-C', text: 'Reemplazar discos defectuosos del servidor físico' },
+      { id: 'q1-D', text: 'Enfriamiento del hardware del datacenter' }
+    ],
+    correctOptionId: 'q1-B',
+    justification: 'El cliente administra acceso lógico (IAM), datos y configuración de recursos.',
+    studyTip: 'Repasa el modelo de responsabilidad compartida: Google opera infraestructura, tú operas configuración y acceso.'
+  },
+  {
+    id: 'q2',
+    topic: 'Compute',
+    prompt: '¿Cuándo conviene usar Cloud Run?',
+    options: [
+      { id: 'q2-A', text: 'Cuando necesitas administrar VMs manualmente' },
+      { id: 'q2-B', text: 'Para ejecutar contenedores sin administrar servidores' },
+      { id: 'q2-C', text: 'Para almacenar objetos estáticos' },
+      { id: 'q2-D', text: 'Para entrenar modelos de ML en GPUs dedicadas' }
+    ],
+    correctOptionId: 'q2-B',
+    justification: 'Cloud Run es serverless para contenedores y escala automáticamente.',
+    studyTip: 'Asocia Cloud Run con contenedores HTTP, despliegue rápido y operación sin servidor.'
+  },
+  {
+    id: 'q3',
+    topic: 'Cost Management',
+    prompt: '¿Qué herramienta ayuda a recibir alertas por presupuesto excedido?',
+    options: [
+      { id: 'q3-A', text: 'Cloud Billing Budgets & Alerts' },
+      { id: 'q3-B', text: 'Cloud Shell' },
+      { id: 'q3-C', text: 'Cloud Scheduler' },
+      { id: 'q3-D', text: 'Artifact Registry' }
+    ],
+    correctOptionId: 'q3-A',
+    justification: 'Budgets & Alerts permite definir umbrales y notificaciones por gasto.',
+    studyTip: 'Recuerda: presupuesto no bloquea gasto automáticamente, pero sí alerta de forma temprana.'
+  }
+];

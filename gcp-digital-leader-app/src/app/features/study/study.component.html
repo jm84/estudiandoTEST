@@ -1,0 +1,44 @@
+@if (hasQuestion()) {
+  <section class="card">
+    <div class="row">
+      <span class="topic">{{ currentQuestion()?.topic }}</span>
+      <span class="progress">{{ progress() }}</span>
+    </div>
+    <h2>{{ currentQuestion()?.prompt }}</h2>
+
+    <div class="options">
+      @for (option of (currentQuestion()?.options ?? []); track option.id; let i = $index) {
+        <button
+          class="option-btn"
+          [class.selected]="selectedOptionId() === option.id"
+          (click)="chooseOption(option.id)"
+          type="button"
+        >
+          <span class="option-label">{{ ['A','B','C','D'][i] }}</span>
+          <span class="option-text">{{ option.text }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="checkAnswer()" [disabled]="!selectedOptionId()">
+        Revisar respuesta
+      </button>
+      <button type="button" class="secondary" [disabled]="!hasPrevious()" (click)="previousQuestion()">← Anterior</button>
+      <button type="button" class="secondary" (click)="nextQuestion()">Siguiente →</button>
+    </div>
+
+    @if (result(); as answerResult) {
+      <article class="feedback" [class.correct]="answerResult.isCorrect" [class.incorrect]="!answerResult.isCorrect">
+        <h3>{{ answerResult.isCorrect ? '¡Correcto!' : 'Incorrecto' }}</h3>
+        <p><strong>Justificación:</strong> {{ answerResult.explanation }}</p>
+        @if (!answerResult.isCorrect) {
+          <p><strong>Alternativa correcta:</strong> {{ answerResult.correctOptionText }}</p>
+          <p><strong>Tip de estudio:</strong> {{ answerResult.studyTip }}</p>
+        }
+      </article>
+    }
+  </section>
+} @else {
+  <p>No hay preguntas disponibles. Crea preguntas en el mantenedor.</p>
+}
