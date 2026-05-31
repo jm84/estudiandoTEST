@@ -1,44 +1,1276 @@
 [
   {
-    "id": "q1",
-    "topic": "Shared Responsibility",
-    "prompt": "¿Qué tarea es responsabilidad del cliente en Google Cloud?",
+    "id": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78",
+    "topic": "Seguridad",
+    "prompt": "Estás administrando la plataforma de comercio electrónico \"ShopNinja\", que depende de una flota de máquinas virtuales para sus operaciones. Recientemente, se generó una alerta sobre una vulnerabilidad de seguridad en los sistemas operativos de algunas de estas máquinas virtuales. ¿Cómo puede ShopNinja identificar de manera más efectiva todas las máquinas virtuales que no tienen la última actualización de seguridad?",
     "options": [
-      { "id": "q1-A", "text": "Mantener el cableado físico del datacenter" },
-      { "id": "q1-B", "text": "Configurar identidades y permisos (IAM)" },
-      { "id": "q1-C", "text": "Reemplazar discos defectuosos del servidor físico" },
-      { "id": "q1-D", "text": "Enfriamiento del hardware del datacenter" }
+      {
+        "id": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78-A",
+        "text": "Consultar el Security Command Center para identificar máquinas virtuales que ejecutan imágenes de disco vulnerables."
+      },
+      {
+        "id": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78-B",
+        "text": "Consultar el Compliance Reports Manager para identificar y descargar una auditoría PCI reciente."
+      },
+      {
+        "id": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78-C",
+        "text": "Consultar el Security Command Center para identificar máquinas virtuales iniciadas hace más de 2 semanas."
+      },
+      {
+        "id": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78-D",
+        "text": "Consultar el Compliance Reports Manager para identificar y descargar una auditoría SOC 1 reciente."
+      }
     ],
-    "correctOptionId": "q1-B",
-    "justification": "El cliente administra acceso lógico (IAM), datos y configuración de recursos.",
-    "studyTip": "Repasa el modelo de responsabilidad compartida: Google opera infraestructura, tú operas configuración y acceso."
+    "correctOptionId": "89b67dda-fb93-4815-b3a9-1e9e1c3d3c78-A",
+    "justification": "El Security Command Center (SCC) es el servicio de Google Cloud diseñado para:\n\nDetectar vulnerabilidades.\nIdentificar configuraciones inseguras.\nEncontrar recursos expuestos.\nMostrar hallazgos de seguridad.\n\nSi una VM está ejecutando una imagen vulnerable o desactualizada, SCC puede reportarlo.\n\n👉 Esta opción ataca directamente el problema de seguridad descrito.",
+    "studyTip": "*PCI se relaciona con cumplimiento normativo para procesamiento de pagos.\n*La edad de la VM no determina si tiene o no los últimos parches.\n*SOC 1 es una auditoría de controles organizacionales."
   },
   {
-    "id": "q2",
-    "topic": "Compute",
-    "prompt": "¿Cuándo conviene usar Cloud Run?",
+    "id": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3",
+    "topic": "Infraestructura y Computación en Google Cloud",
+    "prompt": "Eres líder de proyecto de una empresa ficticia de animación llamada \"PixelDreams\", especializada en producción de animación 3D de alta calidad.\n\nPixelDreams necesita una solución para gestionar la programación y posible interrupción de complejas tareas de renderizado de escenas.\n\nCada tarea de renderizado tarda menos de 12 horas en completarse y no existen plazos estrictos para finalizar todas las escenas.\n\nLas escenas renderizadas se almacenarán en un bucket global de Cloud Storage y las tareas computacionales pueden ejecutarse en cualquier ubicación geográfica.\n\nLa empresa desea utilizar Google Cloud de la manera más rentable posible.\n\n¿Qué enfoque debería adoptar PixelDreams?",
     "options": [
-      { "id": "q2-A", "text": "Cuando necesitas administrar VMs manualmente" },
-      { "id": "q2-B", "text": "Para ejecutar contenedores sin administrar servidores" },
-      { "id": "q2-C", "text": "Para almacenar objetos estáticos" },
-      { "id": "q2-D", "text": "Para entrenar modelos de ML en GPUs dedicadas" }
+      {
+        "id": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3-A",
+        "text": "Implementar la aplicación de renderizado en Compute Engine utilizando instancias preemptibles."
+      },
+      {
+        "id": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3-B",
+        "text": "Desarrollar la aplicación de renderizado para ejecutarse en un grupo de instancias no administrado."
+      },
+      {
+        "id": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3-C",
+        "text": "Crear una reserva para el número mínimo de instancias de Compute Engine requeridas."
+      },
+      {
+        "id": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3-D",
+        "text": "Iniciar más instancias con menos vCPU en lugar de menos instancias con más vCPU."
+      }
     ],
-    "correctOptionId": "q2-B",
-    "justification": "Cloud Run es serverless para contenedores y escala automáticamente.",
-    "studyTip": "Asocia Cloud Run con contenedores HTTP, despliegue rápido y operación sin servidor."
+    "correctOptionId": "0670e9e4-42f4-4dd3-9bd5-c083f2b500c3-A",
+    "justification": "Las instancias preemptibles:\n\nSon mucho más baratas.\nPueden ser terminadas por Google cuando necesita capacidad.\nSon ideales para:\nRenderizado\nBatch processing\nSimulaciones\nProcesamiento científico\n\nComo no existen plazos estrictos, la interrupción es aceptable.\nGoogle está evaluando si puedes identificar una carga de trabajo que:\n\n✅ Puede ser interrumpida.\n\n✅ No tiene deadline estricto.\n\n✅ Puede ejecutarse en cualquier región.\n\n✅ Busca minimizar costos.",
+    "studyTip": "Regla rápida para el examen\nSi la pregunta menciona...\tPiensa en...\nMenor costo posible\tSpot / Preemptible VMs\nTolerancia a interrupciones\tSpot / Preemptible VMs\nProcesamiento batch\tSpot / Preemptible VMs\nGarantizar capacidad\tReservations\nEscalado automático\tManaged Instance Groups"
   },
   {
-    "id": "q3",
-    "topic": "Cost Management",
-    "prompt": "¿Qué herramienta ayuda a recibir alertas por presupuesto excedido?",
+    "id": "2cde5486-4224-4da0-b529-65adf1ec2248",
+    "topic": "Google Cloud Storage",
+    "prompt": "Tu empresa, \"HappyPaws\", una aplicación que conecta dueños de mascotas con cuidadores locales, necesita optimizar sus costos de almacenamiento.\n\nEl equipo está considerando utilizar los servicios de Cloud Storage de Google para almacenar distintos tipos de datos, como:\n\nFotografías de usuarios accedidas frecuentemente.\nDatos históricos de reservas accedidos con poca frecuencia.\n\n¿Cuál es la principal diferencia entre usar almacenamiento Standard y almacenamiento Coldline en este contexto?",
     "options": [
-      { "id": "q3-A", "text": "Cloud Billing Budgets & Alerts" },
-      { "id": "q3-B", "text": "Cloud Shell" },
-      { "id": "q3-C", "text": "Cloud Scheduler" },
-      { "id": "q3-D", "text": "Artifact Registry" }
+      {
+        "id": "2cde5486-4224-4da0-b529-65adf1ec2248-A",
+        "text": "Coldline es para datos donde una velocidad de transferencia lenta es aceptable."
+      },
+      {
+        "id": "2cde5486-4224-4da0-b529-65adf1ec2248-B",
+        "text": "Standard y Coldline tienen diferentes garantías de durabilidad."
+      },
+      {
+        "id": "2cde5486-4224-4da0-b529-65adf1ec2248-C",
+        "text": "Standard y Coldline utilizan APIs diferentes."
+      },
+      {
+        "id": "2cde5486-4224-4da0-b529-65adf1ec2248-D",
+        "text": "Coldline es para datos a los que se accede con poca frecuencia."
+      }
     ],
-    "correctOptionId": "q3-A",
-    "justification": "Budgets & Alerts permite definir umbrales y notificaciones por gasto.",
-    "studyTip": "Recuerda: presupuesto no bloquea gasto automáticamente, pero sí alerta de forma temprana."
+    "correctOptionId": "2cde5486-4224-4da0-b529-65adf1ec2248-D",
+    "justification": "Coldline está diseñado para:\n\nBackups\nDatos históricos\nArchivos consultados ocasionalmente\n\nPermite:\n\n✅ Menor costo de almacenamiento\n\nA cambio de:\n\n✅ Costos de recuperación más altos cuando se accede a los datos.",
+    "studyTip": "Lo importante es:\n\nMás acceso = Standard\n\nMenos acceso = Nearline → Coldline → Archive\nTip de examen\n\nSi la pregunta menciona:\n\nHistorical data\nBackup\nArchive\nRarely accessed\nCost optimization\n\nPiensa en:\n\n➡️ Nearline, Coldline o Archive.\n\nSi menciona:\n\nWebsite images\nUser uploads\nActive application data\nFrequent access\n\nPiensa en:\n\n➡️ Standard Storage."
+  },
+  {
+    "id": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f",
+    "topic": "Networking en Google Cloud",
+    "prompt": "La empresa ficticia ByteSafe maneja datos extremadamente confidenciales de clientes almacenados en sus centros de datos privados.\n\nEsta información sensible necesita ser procesada de forma segura tanto on-premises (en sus propios centros de datos) como en la nube, sin ser transmitida a través de Internet pública.\n\n¿Qué debería hacer ByteSafe para garantizar una conectividad segura para el procesamiento de datos?",
+    "options": [
+      {
+        "id": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f-A",
+        "text": "Configurar Identity-Aware Proxy (IAP) en la red VPC de Google Cloud."
+      },
+      {
+        "id": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f-B",
+        "text": "Crear un túnel Cloud VPN entre Google Cloud y el centro de datos."
+      },
+      {
+        "id": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f-C",
+        "text": "Contratar una conexión Partner Interconnect con su proveedor de red."
+      },
+      {
+        "id": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f-D",
+        "text": "Habilitar Private Google Access en la red VPC de Google Cloud."
+      }
+    ],
+    "correctOptionId": "54b8c7e8-f0c9-4228-9a6d-6a7e39e3680f-C",
+    "justification": "Partner Interconnect permite:\n\nConectar el datacenter con Google Cloud mediante una conexión privada.\nEvitar Internet pública.\nTener mayor capacidad y menor latencia que VPN.\n\nCumple exactamente el requisito planteado.\nIdentifica las palabras clave:\n\n\"On-premises + Cloud\"\n\n👉 Piensa en conectividad híbrida.\n\n\"Without public internet\"\n\n👉 Descarta Cloud VPN.\n\n👉 Piensa en Interconnect.\nSi ves:\n\nOn-premises\nHybrid cloud\nData center\nPrivate connection\nNo public internet\n\nPiensa inmediatamente en:\n\n➡️ Interconnect\n\nSi ves:\n\nEncrypted connection\nQuick setup\nSite-to-site connectivity\n\nPiensa en:\n\n➡️ Cloud VPN",
+    "studyTip": "La clave está en esta frase:\n\nwithout being transmitted over the public internet\n\n( sin ser transmitida por Internet pública )\n\nGoogle quiere saber qué solución proporciona una conexión entre:\n\n🏢 Data Center local (On-Premises)\n\n☁️ Google Cloud\n\nsin utilizar Internet pública."
+  },
+  {
+    "id": "fcdb1b12-cb40-4544-a41e-737da5480f55",
+    "topic": "Desarrollo de Aplicaciones y DevOps",
+    "prompt": "Tu equipo en Fictional Foods está desarrollando una aplicación gourmet de entrega de comida que será desplegada en Cloud Run.\n\nPara garantizar actualizaciones fluidas y despliegues rápidos de nuevas funcionalidades, debes diseñar un pipeline CI/CD que minimice los pasos necesarios para el despliegue.\n\nUn aspecto crucial es determinar el mejor lugar para almacenar las imágenes de contenedor después de que el proceso de integración continua (CI) las construya.\n\n¿Qué deberías hacer?",
+    "options": [
+      {
+        "id": "fcdb1b12-cb40-4544-a41e-737da5480f55-A",
+        "text": "Crear una imagen de Compute Engine que contenga la aplicación."
+      },
+      {
+        "id": "fcdb1b12-cb40-4544-a41e-737da5480f55-B",
+        "text": "Almacenar las imágenes en Artifact Registry."
+      },
+      {
+        "id": "fcdb1b12-cb40-4544-a41e-737da5480f55-C",
+        "text": "Almacenar las imágenes en Cloud Storage."
+      },
+      {
+        "id": "fcdb1b12-cb40-4544-a41e-737da5480f55-D",
+        "text": "Crear un disco de Compute Engine que contenga la aplicación."
+      }
+    ],
+    "correctOptionId": "fcdb1b12-cb40-4544-a41e-737da5480f55-B",
+    "justification": "Artifact Registry es el lugar recomendado para:\n\nGuardar imágenes Docker.\nIntegrarse con Cloud Build.\nDesplegar directamente a Cloud Run.\nAutomatizar pipelines CI/CD.\n\nEs la solución estándar de Google Cloud.\nLa pregunta quiere saber:\n\n¿Dónde deben almacenarse las imágenes Docker para que Cloud Run pueda desplegarlas fácilmente dentro de un pipeline CI/CD?\nCódigo fuente\n     ↓\n Cloud Build\n     ↓\n Imagen Docker\n     ↓\n Artifact Registry\n     ↓\n Cloud Run\nArtifact Registry es el repositorio administrado por Google Cloud para almacenar:\n\nImágenes Docker\nPaquetes\nArtefactos de construcción",
+    "studyTip": "Cuando veas:\n\nCloud Run\nContainers\nDocker images\n\nDebes pensar inmediatamente:\n\n➡️ Artifact Registry\n\nNo Compute Engine.\n\n\nCloud Storage\t-->      Archivos y objetos\nCloud SQL -->\tDatos relacionales\nBigQuery -->\tDatos analíticos\nArtifact Registry -->\tImágenes de contenedor\nCompute Engine -->Image\tPlantillas de VM"
+  },
+  {
+    "id": "f4e8a145-fac7-4e30-93be-b890d9c22854",
+    "topic": "Fundamentos de Cloud Computing",
+    "prompt": "Imagina que eres el CTO de BrightBooks, una plataforma en línea que ofrece una amplia colección de libros electrónicos y audiolibros.\n\nEstás explorando diferentes modelos de servicios en la nube para determinar la mejor manera de gestionar tu aplicación y sus necesidades de infraestructura.\n\nCada uno de los tres modelos de servicio en la nube:\n\nInfrastructure as a Service (IaaS)\nPlatform as a Service (PaaS)\nSoftware as a Service (SaaS)\n\nofrece distintos beneficios en términos de flexibilidad y nivel de gestión entre el proveedor de nube y el cliente.\n\n¿Por qué SaaS sería la elección correcta para BrightBooks?",
+    "options": [
+      {
+        "id": "f4e8a145-fac7-4e30-93be-b890d9c22854-A",
+        "text": "Quieres un equilibrio entre la flexibilidad de BrightBooks y el nivel de administración realizado por el proveedor de nube."
+      },
+      {
+        "id": "f4e8a145-fac7-4e30-93be-b890d9c22854-B",
+        "text": "Quieres minimizar el nivel de administración realizado por BrightBooks."
+      },
+      {
+        "id": "f4e8a145-fac7-4e30-93be-b890d9c22854-C",
+        "text": "Quieres maximizar la flexibilidad para BrightBooks."
+      },
+      {
+        "id": "f4e8a145-fac7-4e30-93be-b890d9c22854-D",
+        "text": "Quieres poder cambiar el énfasis entre flexibilidad y administración del proveedor según cambien las necesidades de BrightBooks."
+      }
+    ],
+    "correctOptionId": "f4e8a145-fac7-4e30-93be-b890d9c22854-B",
+    "justification": "Esta es precisamente la definición de SaaS.\n\nLa empresa:\n\nNo administra servidores.\nNo administra sistemas operativos.\nNo administra la aplicación.\n\nSimplemente consume el servicio.",
+    "studyTip": "Cuando aparezcan estas frases:\n\n\"No quiero administrar infraestructura\"\n\nPiensa:\n\n➡️ PaaS o SaaS\n\n\"No quiero administrar casi nada\"\n\nPiensa:\n\n➡️ SaaS\n\n\"Quiero el máximo control\"\n\nPiensa:\n\n➡️ IaaS"
+  },
+  {
+    "id": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a",
+    "topic": "Fundamentos de Cloud Computing",
+    "prompt": "Tu popular plataforma de comercio electrónico, ShopEase, opera servidores que manejan transacciones en línea críticas y datos de clientes en varias ubicaciones alrededor del mundo.\n\nDeseas simplificar la gestión de estas operaciones críticas desde un único punto central y eliminar la necesidad de realizar mantenimiento manual de la infraestructura.\n\n¿Qué debería hacer ShopEase?",
+    "options": [
+      {
+        "id": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a-A",
+        "text": "Migrar las cargas de trabajo a una nube pública."
+      },
+      {
+        "id": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a-B",
+        "text": "Migrar las cargas de trabajo a un edificio de oficina central."
+      },
+      {
+        "id": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a-C",
+        "text": "Migrar las cargas de trabajo a múltiples instalaciones locales de colocación (co-location)."
+      },
+      {
+        "id": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a-D",
+        "text": "Migrar las cargas de trabajo a múltiples nubes privadas locales."
+      }
+    ],
+    "correctOptionId": "2471ff22-d7ea-4fc7-92bd-75ceb0b5949a-A",
+    "justification": "Google quiere que identifiques los beneficios clásicos de la nube pública:\n\n✅ Administración centralizada.\n\n✅ Menos gestión de infraestructura.\n\n✅ Eliminación de mantenimiento de hardware.\n\n✅ Operación global.\n\nLa nube pública proporciona:\n\nGestión centralizada.\nInfraestructura administrada por el proveedor.\nEscalabilidad global.\nMenor necesidad de operar hardware propio.\n\nEsto responde exactamente a los objetivos descritos.",
+    "studyTip": "Cuando veas frases como:\n\nReduce operational overhead\nEliminate hardware maintenance\nGlobal infrastructure\nCentralized management\n\nPiensa inmediatamente en:\n\n➡️ Public Cloud"
+  },
+  {
+    "id": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b",
+    "topic": "Modernización de Aplicaciones",
+    "prompt": "Tu plataforma de comercio electrónico, ShopSavvy, está experimentando retrasos en el despliegue de actualizaciones para su aplicación de carrito de compras basada en máquinas virtuales (VMs), debido a los largos tiempos de arranque del sistema operativo.\n\nEsto está ralentizando el ciclo de liberación de nuevas versiones.\n\nPara acelerar los despliegues de la aplicación y reducir el tiempo de inactividad, ¿qué debería hacer ShopSavvy?",
+    "options": [
+      {
+        "id": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b-A",
+        "text": "Migrar las VMs a la nube y agregarles más recursos."
+      },
+      {
+        "id": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b-B",
+        "text": "Convertir las aplicaciones en contenedores."
+      },
+      {
+        "id": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b-C",
+        "text": "Incrementar los recursos de las VMs."
+      },
+      {
+        "id": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b-D",
+        "text": "Automatizar los despliegues de actualizaciones."
+      }
+    ],
+    "correctOptionId": "45c44bc4-b5fe-4793-8bd7-c3d32292cc8b-B",
+    "justification": "La clave está aquí:\n\nlengthy OS boot times\n\n(Tiempos largos de arranque del sistema operativo)\n\nGoogle quiere saber si entiendes una de las ventajas fundamentales de los contenedores frente a las VMs.\nEsta es exactamente la solución al problema planteado.\n\nLos contenedores:\n\nInician rápidamente.\nReducen tiempos de despliegue.\nFacilitan actualizaciones.\nReducen downtime.\n\nPor eso son la base de servicios como:\n\nCloud Run\nGoogle Kubernetes Engine\nCuando veas:\n\nFaster deployments\nModernization\nRapid scaling\nShort startup times\nReduce VM overhead\n\nPiensa inmediatamente en:\n\n➡️ Containers",
+    "studyTip": "El contenedor comparte el sistema operativo del host.\n\nPor eso:\n\n✅ Arranca mucho más rápido.\n\n✅ Consume menos recursos.\n\n✅ Facilita despliegues frecuentes."
+  },
+  {
+    "id": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa",
+    "topic": "Seguridad e Identidad",
+    "prompt": "Tu startup tecnológica, ByteSolutions, utiliza Active Directory (AD) para gestionar la autenticación de sus empleados.\n\nPara garantizar que cuando la cuenta de Active Directory de un empleado sea deshabilitada o eliminada, también se revoque automáticamente su acceso a las herramientas internas de Google Workspace, ¿qué debería implementar ByteSolutions?",
+    "options": [
+      {
+        "id": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa-A",
+        "text": "Configurar autenticación de dos factores (2FA) en el dominio de Google."
+      },
+      {
+        "id": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa-B",
+        "text": "Eliminar la cuenta de Google de todas las políticas IAM."
+      },
+      {
+        "id": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa-C",
+        "text": "Configurar BeyondCorp e Identity-Aware Proxy (IAP) en el dominio de Google."
+      },
+      {
+        "id": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa-D",
+        "text": "Configurar Single Sign-On (SSO) en el dominio de Google."
+      }
+    ],
+    "correctOptionId": "a482cc4d-b8d0-4d09-8add-1a96bd32eaaa-D",
+    "justification": "Configure single sign-on in the Google domain\n\nSSO permite que:\n\nActive Directory sea la fuente principal de autenticación.\nGoogle Workspace confíe en AD para validar usuarios.\nCuando una cuenta es deshabilitada en AD, el acceso puede revocarse automáticamente.\n\nEsta es exactamente la integración que la pregunta describe.\nCuando veas:\n\nActive Directory + Google\n\nPiensa inmediatamente en:\n\n➡️ Single Sign-On (SSO)\n\no\n\n➡️ Identity Federation\n\nGoogle suele evaluar la idea de tener una única fuente de identidad.\n\nSi ves:\nActive Directory\nCorporate Identity Provider\nLDAP\nEmployee accounts\n\nPiensa:\n\n➡️ SSO / Identity Federation\n\nSi ves:\nContext-aware access\nZero Trust\nApplication access\n\nPiensa:\n\n➡️ Identity-Aware Proxy (IAP)",
+    "studyTip": "La empresa ya tiene un sistema de identidad:\n\n👉 Active Directory\n\nY quiere que:\n\nSi un usuario pierde acceso en Active Directory, automáticamente pierda acceso en Google Workspace.\n\nLa pregunta es:\n\n¿Cómo hacer que Google confíe en Active Directory como fuente central de identidad?"
+  },
+  {
+    "id": "de51e950-4fee-44c1-83a6-fc39f4fb41e2",
+    "topic": "Seguridad e IAM (Identity and Access Management)",
+    "prompt": "Imagina que eres responsable de gestionar el acceso a los datos de \"MapleLeaf Learning\", una plataforma educativa que almacena todos sus videos tutoriales y recursos en un bucket de Cloud Storage.\n\nPara cumplir con restricciones regionales de contenido, necesitas garantizar que solo los miembros del personal ubicados en Canadá puedan acceder a este bucket.\n\n¿Cuál es el método más efectivo y eficiente para lograrlo?",
+    "options": [
+      {
+        "id": "de51e950-4fee-44c1-83a6-fc39f4fb41e2-A",
+        "text": "Implementar el bucket de Cloud Storage en una región de Google Cloud ubicada en Canadá."
+      },
+      {
+        "id": "de51e950-4fee-44c1-83a6-fc39f4fb41e2-B",
+        "text": "Configurar Google Cloud Armor para permitir acceso al bucket únicamente desde direcciones IP ubicadas en Canadá."
+      },
+      {
+        "id": "de51e950-4fee-44c1-83a6-fc39f4fb41e2-C",
+        "text": "Otorgar acceso individual al bucket a cada miembro del personal canadiense."
+      },
+      {
+        "id": "de51e950-4fee-44c1-83a6-fc39f4fb41e2-D",
+        "text": "Crear un grupo que contenga a todos los miembros del personal canadiense y otorgar acceso a ese grupo."
+      }
+    ],
+    "correctOptionId": "de51e950-4fee-44c1-83a6-fc39f4fb41e2-D",
+    "justification": "Create a group consisting of all Canadian staff members, and grant access to this group\n\nEsta es la mejor práctica de Google Cloud.\n\nCreas un grupo:\n\ncanada-staff@company.com\n\nLuego otorgas permisos al grupo.\n\nCuando un empleado:\n\nIngresa → lo agregas al grupo.\nSale → lo eliminas del grupo.\n\nNo necesitas modificar IAM continuamente.",
+    "studyTip": "Cuando veas:\n\nMany users\nDepartment\nTeam\nEmployees\nEfficient access management\n\nPiensa inmediatamente:\n\n➡️ Google Groups + IAM"
+  },
+  {
+    "id": "b701b3b2-5bd5-48b6-9a4d-6000902bd667",
+    "topic": "Optimización de costos y escalabilidad",
+    "prompt": "Tu plataforma ficticia de comercio electrónico, \"FotoMagic\", procesa imágenes de alta resolución de clientes utilizando máquinas virtuales en Google Cloud.\n\nEste procesamiento incluye filtros complejos y mejoras de imagen, y tarda varias horas por imagen.\n\nAunque FotoMagic normalmente opera con una carga estable, experimenta con frecuencia aumentos significativos de demanda durante promociones y períodos festivos, incrementando drásticamente la carga de trabajo.\n\nPara gestionar eficientemente los costos mientras maneja estos picos periódicos de actividad, ¿qué enfoque debería adoptar FotoMagic?",
+    "options": [
+      {
+        "id": "b701b3b2-5bd5-48b6-9a4d-6000902bd667-A",
+        "text": "Utilizar máquinas virtuales preemptibles (Preemptible VMs) de Google Cloud para un procesamiento rentable durante los períodos de mayor demanda."
+      },
+      {
+        "id": "b701b3b2-5bd5-48b6-9a4d-6000902bd667-B",
+        "text": "Implementar Google Kubernetes Engine (GKE) para escalar automáticamente la capacidad de procesamiento hacia arriba y hacia abajo."
+      },
+      {
+        "id": "b701b3b2-5bd5-48b6-9a4d-6000902bd667-C",
+        "text": "Configurar App Engine para manejar automáticamente el procesamiento de imágenes durante los picos de carga."
+      },
+      {
+        "id": "b701b3b2-5bd5-48b6-9a4d-6000902bd667-D",
+        "text": "Utilizar Cloud Functions para asignar recursos dinámicamente según la demanda de procesamiento de imágenes."
+      }
+    ],
+    "correctOptionId": "b701b3b2-5bd5-48b6-9a4d-6000902bd667-A",
+    "justification": "En esta pregunta, el autor del examen dio más peso a cost optimization que a autoscaling, por eso la respuesta oficial es A.\n\nGKE permite:\n\n✅ Escalar automáticamente.\n\n✅ Agregar nodos durante promociones.\n\n✅ Reducir capacidad cuando baja la demanda.\n\n✅ Optimizar costos porque sólo usas recursos cuando son necesarios.\n\nLa palabra clave es:\n\nautomatically scale\nCuando veas:\n\n\"Periodic spikes\"\n\"Automatically scale\"\n\"Scale up and down\"\n\nPiensa inmediatamente en:\n\n➡️ GKE\n\n➡️ Autoscaling",
+    "studyTip": "Porque se parece mucho a la pregunta anterior de renderizado 3D donde la respuesta era:\n\n✅ Preemptible VMs\n\nPero aquí hay una diferencia crítica:\n\nPregunta anterior\nSin deadlines estrictos.\nTrabajo batch.\nCostos como prioridad principal.\n\n👉 Preemptible VM.\n\nEsta pregunta\nPicos frecuentes.\nNecesidad de aumentar y disminuir capacidad.\nEscalabilidad automática.\n\n👉 GKE."
+  },
+  {
+    "id": "6f16bba2-4a55-46da-bd71-63fba99ddf7a",
+    "topic": "Fundamentos de Cloud Computing",
+    "prompt": "Tu empresa, una agencia de viajes en línea llamada \"Global Journeys\", ha adquirido recientemente tres aplicaciones de viajes emergentes en diferentes regiones: Europa, Asia y Sudamérica.\n\nPara optimizar las operaciones y minimizar los costos de administración de infraestructura, mientras garantizas un servicio seguro y de alta calidad para usuarios en todo el mundo, necesitas integrar estas nuevas aplicaciones en tu sistema existente.\n\n¿Cómo deberías cumplir estos requisitos?",
+    "options": [
+      {
+        "id": "6f16bba2-4a55-46da-bd71-63fba99ddf7a-A",
+        "text": "Hospedar todos los servicios de las aplicaciones adquiridas en infraestructura local (on-premises) junto con los servicios existentes."
+      },
+      {
+        "id": "6f16bba2-4a55-46da-bd71-63fba99ddf7a-B",
+        "text": "Hospedar todos los servicios de las aplicaciones adquiridas junto con los servicios existentes en la nube pública."
+      },
+      {
+        "id": "6f16bba2-4a55-46da-bd71-63fba99ddf7a-C",
+        "text": "Construir una infraestructura homogénea en cada ubicación de las aplicaciones adquiridas e invertir en capacitar a sus ingenieros."
+      },
+      {
+        "id": "6f16bba2-4a55-46da-bd71-63fba99ddf7a-D",
+        "text": "Construir una infraestructura homogénea en cada ubicación de las aplicaciones adquiridas e invertir en contratar más ingenieros."
+      }
+    ],
+    "correctOptionId": "6f16bba2-4a55-46da-bd71-63fba99ddf7a-B",
+    "justification": "Esta opción aprovecha:\n\n✅ Infraestructura global de Google.\n\n✅ Menor administración.\n\n✅ Escalabilidad mundial.\n\n✅ Menor costo operacional.\n\n✅ Servicios administrados.\n\nResponde exactamente a los tres requisitos.\n\nCuando aparezcan frases como:\n\nGlobal users\nWorldwide service\nReduce operational overhead\nSimplify infrastructure\nLower management costs\n\nPiensa inmediatamente en:\n\n➡️ Public Cloud",
+    "studyTip": "Cuando veas:\n\nEmpresas adquiridas\nOperaciones globales\nReducir administración\nMenor costo\n\nGoogle normalmente espera:\n\n➡️ Consolidar en la nube pública."
+  },
+  {
+    "id": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a",
+    "topic": "Google Cloud Resource Hierarchy",
+    "prompt": "Estás administrando un popular sitio web de adopción de mascotas llamado PawsPal y necesitas mantener el gasto en Google Cloud fácil de gestionar, al mismo tiempo que garantizas que el entorno de desarrollo esté completamente separado del entorno de producción para evitar posibles problemas.\n\n¿Qué medidas debes tomar para asegurar que las cargas de trabajo de desarrollo estén totalmente aisladas de las cargas de trabajo de producción?",
+    "options": [
+      {
+        "id": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a-A",
+        "text": "Aplicar una etiqueta (tag) única a los recursos de desarrollo."
+      },
+      {
+        "id": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a-B",
+        "text": "Asociar los recursos de desarrollo a su propia red."
+      },
+      {
+        "id": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a-C",
+        "text": "Asociar los recursos de desarrollo a su propia cuenta de facturación."
+      },
+      {
+        "id": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a-D",
+        "text": "Colocar los recursos de desarrollo en su propio proyecto."
+      }
+    ],
+    "correctOptionId": "2ced1e4d-bb25-46c5-b15f-b0dba19cd75a-D",
+    "justification": "En Google Cloud, la unidad principal de aislamiento es:\n\n➡️ Project\n\nLa jerarquía de Google Cloud es:\n\nOrganization\n│\n├── Project DEV\n│\n├── Project QA\n│\n└── Project PROD\nLos proyectos permiten aislar:\n\nRecursos\nIAM\nAPIs habilitadas\nCuotas\nRedes\nLogs\nFacturación (reportes)\n\nPor eso Google recomienda separar ambientes en proyectos distintos\n\nEsta es la recomendación oficial de Google Cloud.\n\nUn proyecto separado proporciona:\n\n✅ Aislamiento administrativo.\n\n✅ Separación de recursos.\n\n✅ Separación de permisos.\n\n✅ Mejor control de costos.\n\n✅ Separación entre DEV y PROD.\nTip de examen Digital Leader\n\nCuando veas:\n\nDevelopment environment\nProduction environment\nIsolation\nSeparate workloads\nGovernance\n\nPiensa inmediatamente en:\n\n➡️ Separate Projects",
+    "studyTip": "Tip de examen Digital Leader\n\nCuando veas:\n\nDevelopment environment\nProduction environment\nIsolation\nSeparate workloads\nGovernance\n\nPiensa inmediatamente en:\n\n➡️ Separate Projects"
+  },
+  {
+    "id": "14821233-d936-48c4-aad3-702a378e620b",
+    "topic": "Infraestructura Global de Google Cloud",
+    "prompt": "FantasyTech ejecuta un juego multijugador altamente interactivo sobre máquinas virtuales de Compute Engine y necesita:\n\nRedundancia (alta disponibilidad).\nComunicación extremadamente rápida (menos de 10 milisegundos) entre servidores de juego alojados en distintas máquinas virtuales.\n\n¿Dónde debería ubicar FantasyTech estas máquinas virtuales para cumplir sus requisitos?",
+    "options": [
+      {
+        "id": "14821233-d936-48c4-aad3-702a378e620b-A",
+        "text": "En una única zona dentro de una única región."
+      },
+      {
+        "id": "14821233-d936-48c4-aad3-702a378e620b-B",
+        "text": "En diferentes zonas dentro de una misma región."
+      },
+      {
+        "id": "14821233-d936-48c4-aad3-702a378e620b-C",
+        "text": "En múltiples regiones, usando una zona por región."
+      },
+      {
+        "id": "14821233-d936-48c4-aad3-702a378e620b-D",
+        "text": "En múltiples regiones, usando múltiples zonas por región."
+      }
+    ],
+    "correctOptionId": "14821233-d936-48c4-aad3-702a378e620b-B",
+    "justification": "In different zones within a single region\n\nEsta opción cumple ambos requisitos:\n\nRedundancia\n\nSi una zona falla:\n\n✅ La otra sigue operando.\n\nBaja latencia\n\nLas zonas dentro de una misma región tienen conexiones muy rápidas.\n\n✅ Menos latencia que entre regiones.\n\nTip de examen Digital Leader\nSi la pregunta menciona:\nHigh availability\nLow latency\nFast communication\n\nPiensa:\n\n➡️ Multiple zones in the same region\n\nSi la pregunta menciona:\nDisaster recovery\nGeographic resilience\nRegional outage\n\nPiensa:\n\n➡️ Multiple regions",
+    "studyTip": "Concepto clave\n¿Qué es una Zona?\n\nUna zona es básicamente un datacenter independiente."
+  },
+  {
+    "id": "af7d102b-abbe-4793-9411-b844fdb2dbc1",
+    "topic": "Serverless Computing",
+    "prompt": "Tu empresa, ChirpWave, está desarrollando una nueva funcionalidad para su red social que permite a los usuarios seguir las actividades de otros usuarios en tiempo real.\n\nCada vez que un usuario decide seguir a otro, esta acción genera una escritura en la base de datos en tiempo real de la plataforma.\n\nPara mejorar la experiencia del usuario, necesitas una solución de código ligera que:\n\nResponda instantáneamente a los cambios en la base de datos.\nEnvíe notificaciones sobre nuevos seguidores.\nSe integre fácilmente con Pub/Sub, Firebase y otras APIs de Google Cloud.\nAdministre automáticamente la infraestructura.\nEscale a cero durante períodos de inactividad para optimizar costos.\n\n¿Qué recurso principal de cómputo deberían elegir los desarrolladores?",
+    "options": [
+      {
+        "id": "af7d102b-abbe-4793-9411-b844fdb2dbc1-A",
+        "text": "Google Kubernetes Engine (GKE)"
+      },
+      {
+        "id": "af7d102b-abbe-4793-9411-b844fdb2dbc1-B",
+        "text": "Cloud Functions"
+      },
+      {
+        "id": "af7d102b-abbe-4793-9411-b844fdb2dbc1-C",
+        "text": "App Engine Flexible Environment"
+      },
+      {
+        "id": "af7d102b-abbe-4793-9411-b844fdb2dbc1-D",
+        "text": "Compute Engine"
+      }
+    ],
+    "correctOptionId": "af7d102b-abbe-4793-9411-b844fdb2dbc1-B",
+    "justification": "Cloud Functions fue diseñada exactamente para este tipo de casos.\n\nBeneficios:\n\n✅ Event-driven\n\n✅ Firebase triggers\n\n✅ Pub/Sub triggers\n\n✅ Infraestructura administrada\n\n✅ Escalado automático\n\n✅ Scale to Zero\n\nCómo identificar Cloud Functions en segundos\n\nSi la pregunta menciona:\n\nEvento\nTrigger\nFirebase\nPub/Sub\nScale to Zero\n\nLa respuesta casi siempre es:\n\n➡️ Cloud Functions",
+    "studyTip": "Cómo identificar Cloud Functions en segundos\n\nSi la pregunta menciona:\n\nEvento\nTrigger\nFirebase\nPub/Sub\nScale to Zero\n\nLa respuesta casi siempre es:\n\n➡️ Cloud Functions"
+  },
+  {
+    "id": "71af6048-5922-47d6-9729-6c168fe9cb9c",
+    "topic": "Datos e Inteligencia Artificial",
+    "prompt": "FantasyBox, un nuevo servicio de streaming especializado en eventos deportivos de fantasía en vivo, necesita construir pipelines de datos eficientes para manejar estadísticas de partidos en tiempo real e interacciones de los espectadores.\n\nLa empresa quiere evitar la complejidad de administrar servidores individuales responsables del procesamiento de datos dentro de estos pipelines.\n\nEn su lugar, busca un servicio administrado que pueda escalar automáticamente según el volumen variable de datos generado durante los momentos de mayor actividad.\n\n¿Qué producto o característica de Google Cloud debería elegir FantasyBox?",
+    "options": [
+      {
+        "id": "71af6048-5922-47d6-9729-6c168fe9cb9c-A",
+        "text": "Pub/Sub"
+      },
+      {
+        "id": "71af6048-5922-47d6-9729-6c168fe9cb9c-B",
+        "text": "Dataflow"
+      },
+      {
+        "id": "71af6048-5922-47d6-9729-6c168fe9cb9c-C",
+        "text": "Data Catalog"
+      },
+      {
+        "id": "71af6048-5922-47d6-9729-6c168fe9cb9c-D",
+        "text": "Dataprep by Trifacta"
+      }
+    ],
+    "correctOptionId": "71af6048-5922-47d6-9729-6c168fe9cb9c-B",
+    "justification": "Dataflow fue diseñado exactamente para esto.\n\nPermite:\n\n✅ Procesamiento batch.\n\n✅ Procesamiento streaming.\n\n✅ Autoscaling.\n\n✅ Servicio administrado.\n\n✅ No administrar servidores.\n\nEs una de las respuestas clásicas del examen Digital Leader.\n\n¿Necesitan mover datos?\n\nPub/Sub.\n\n¿Necesitan procesar datos?\n\nDataflow.\n\nAquí la pregunta habla explícitamente de:\n\ndata processing within these pipelines\n\nPor eso la respuesta es Dataflow.\n\n🎯 Tip de examen Digital Leader\nSi ves:\nStreaming pipeline\nETL\nData processing\nApache Beam\nAutoscaling\n\nPiensa inmediatamente en:\n\n➡️ Dataflow\n\nSi ves:\nMessaging\nEvent ingestion\nPublish/Subscribe\n\nPiensa en:\n\n➡️ Pub/Sub",
+    "studyTip": "¿Necesitan mover datos?\n\nPub/Sub.\n\n¿Necesitan procesar datos?\n\nDataflow.\n\nAquí la pregunta habla explícitamente de:\n\ndata processing within these pipelines\n\nPor eso la respuesta es Dataflow.\n\n🎯 Tip de examen Digital Leader\nSi ves:\nStreaming pipeline\nETL\nData processing\nApache Beam\nAutoscaling\n\nPiensa inmediatamente en:\n\n➡️ Dataflow\n\nSi ves:\nMessaging\nEvent ingestion\nPublish/Subscribe\n\nPiensa en:\n\n➡️ Pub/Sub"
+  },
+  {
+    "id": "df42920c-80ed-49bb-be4b-e82d1e0b5640",
+    "topic": "Seguridad y Operaciones",
+    "prompt": "Imagina que eres el gerente de TI de una plataforma de comercio electrónico de rápido crecimiento llamada \"Shopiverse\".\n\nNecesitas un producto de Google Cloud que pueda:\n\nInformar sobre el estado de seguridad.\nAyudar a garantizar el cumplimiento (compliance).\nCubrir múltiples servicios.\nCubrir múltiples proyectos dentro de la organización.\n\n¿Qué producto de Google Cloud deberías elegir para realizar esta tarea?",
+    "options": [
+      {
+        "id": "df42920c-80ed-49bb-be4b-e82d1e0b5640-A",
+        "text": "Cloud Logging"
+      },
+      {
+        "id": "df42920c-80ed-49bb-be4b-e82d1e0b5640-B",
+        "text": "Identity and Access Management (IAM)"
+      },
+      {
+        "id": "df42920c-80ed-49bb-be4b-e82d1e0b5640-C",
+        "text": "Google Cloud Armor"
+      },
+      {
+        "id": "df42920c-80ed-49bb-be4b-e82d1e0b5640-D",
+        "text": "Security Command Center"
+      }
+    ],
+    "correctOptionId": "df42920c-80ed-49bb-be4b-e82d1e0b5640-D",
+    "justification": "Security Command Center\n\nSecurity Command Center proporciona:\n\n✅ Visión centralizada.\n\n✅ Hallazgos de seguridad.\n\n✅ Gestión de vulnerabilidades.\n\n✅ Monitoreo de compliance.\n\n✅ Cobertura de múltiples proyectos.\n\n✅ Postura de seguridad organizacional.",
+    "studyTip": "Cómo reconocer esta pregunta en el examen\n\nSi aparecen palabras como:\n\nCompliance\nSecurity posture\nVulnerabilities\nFindings\nOrganization-wide\nMultiple projects\n\nPiensa inmediatamente en:\n\n➡️ Security Command Center (SCC)"
+  },
+  {
+    "id": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c",
+    "topic": "Seguridad e Identidad",
+    "prompt": "Tu empresa de videojuegos, Galactic Gamers, quiere migrar a una solución basada en Google Cloud para:\n\nVerificar y gestionar los nombres de usuario y contraseñas de los jugadores.\nControlar el acceso a distintos recursos del juego según la identidad de cada jugador.\n\n¿Qué debería elegir tu empresa?",
+    "options": [
+      {
+        "id": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c-A",
+        "text": "VPN tunnels"
+      },
+      {
+        "id": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c-B",
+        "text": "Identity Platform"
+      },
+      {
+        "id": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c-C",
+        "text": "Reglas de firewall de Compute Engine"
+      },
+      {
+        "id": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c-D",
+        "text": "Private Google Access"
+      }
+    ],
+    "correctOptionId": "ef330a0c-8a0e-4f60-acfd-4328ce81fa4c-B",
+    "justification": "Identity Platform es el servicio de Google Cloud para:\n\n✅ Registro de usuarios.\n\n✅ Login.\n\n✅ Gestión de contraseñas.\n\n✅ Autenticación.\n\n✅ Integración con proveedores de identidad.\n\n✅ Aplicaciones para clientes.\n\nEs exactamente el escenario descrito.\n\n🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nCustomers\nEnd users\nPlayers\nMobile app users\nWebsite users\n\nPiensa inmediatamente en:\n\n➡️ Identity Platform\n\nSi la pregunta menciona:\nEmployees\nAdministrators\nCloud resources\nRoles and permissions\n\nPiensa en:\n\n➡️ IAM",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nCustomers\nEnd users\nPlayers\nMobile app users\nWebsite users\n\nPiensa inmediatamente en:\n\n➡️ Identity Platform\n\nSi la pregunta menciona:\nEmployees\nAdministrators\nCloud resources\nRoles and permissions\n\nPiensa en:\n\n➡️ IAM"
+  },
+  {
+    "id": "ad400467-cb52-4ceb-8018-f0098e335d79",
+    "topic": "Networking",
+    "prompt": "Imagina que trabajas para una empresa llamada PetZone, especializada en suministros para mascotas y consultas veterinarias en línea.\n\nPetZone necesita crear una conexión de red segura y privada entre:\n\nSu red de oficina local (on-premises).\nSus servicios alojados en Google Cloud.\n\nEl objetivo es garantizar una conectividad fluida e inmediata para:\n\nGestionar inventario.\nProcesar pedidos.\nRealizar consultas virtuales.\n\nTodo ello sin comprometer la seguridad de los datos.\n\n¿Qué producto o funcionalidad de Google Cloud debería utilizar PetZone?",
+    "options": [
+      {
+        "id": "ad400467-cb52-4ceb-8018-f0098e335d79-A",
+        "text": "Cloud Interconnect"
+      },
+      {
+        "id": "ad400467-cb52-4ceb-8018-f0098e335d79-B",
+        "text": "Direct Peering"
+      },
+      {
+        "id": "ad400467-cb52-4ceb-8018-f0098e335d79-C",
+        "text": "Cloud VPN"
+      },
+      {
+        "id": "ad400467-cb52-4ceb-8018-f0098e335d79-D",
+        "text": "Cloud CDN"
+      }
+    ],
+    "correctOptionId": "ad400467-cb52-4ceb-8018-f0098e335d79-C",
+    "justification": "Cloud VPN está diseñado exactamente para:\n\nConectar una oficina local con Google Cloud.\nCrear un túnel cifrado.\nMantener la comunicación segura.\n\nEs la respuesta que Google espera en preguntas genéricas de conectividad híbrida.\n🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nOn-premises\nSecure connection\nHybrid connectivity\n\nPiensa primero en:\n\n➡️ Cloud VPN\n\nSi además menciona:\nDedicated connection\nHigh throughput\nNo public internet\nPrivate connectivity\n\nPiensa en:\n\n➡️ Interconnect",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nOn-premises\nSecure connection\nHybrid connectivity\n\nPiensa primero en:\n\n➡️ Cloud VPN\n\nSi además menciona:\nDedicated connection\nHigh throughput\nNo public internet\nPrivate connectivity\n\nPiensa en:\n\n➡️ Interconnect"
+  },
+  {
+    "id": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b",
+    "topic": "Desarrollo de Aplicaciones",
+    "prompt": "Tu equipo en TravelBuddies, una empresa ficticia que está creando una innovadora aplicación de acompañamiento para viajes, necesita elegir una plataforma integral de computación en la nube para manejar:\n\nContenido dinámico.\nInteracciones de usuarios.\nServicios backend.\n\nTodo ello de forma fluida y sencilla.\n\n¿Qué producto o funcionalidad de Google Cloud debería utilizar TravelBuddies?",
+    "options": [
+      {
+        "id": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b-A",
+        "text": "Google Kubernetes Engine (GKE)"
+      },
+      {
+        "id": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b-B",
+        "text": "Firebase"
+      },
+      {
+        "id": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b-C",
+        "text": "Cloud Functions"
+      },
+      {
+        "id": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b-D",
+        "text": "App Engine"
+      }
+    ],
+    "correctOptionId": "d98c34dd-7ab3-4ecb-bf81-a87a3434e81b-B",
+    "justification": "🎯 Por qué el autor espera Firebase\n\nPara Google, Firebase es:\n\nUna plataforma completa de desarrollo de aplicaciones.\n\nIncluye:\n\nAuthentication\nFirestore / Realtime Database\nCloud Storage\nHosting\nAnalytics\nCloud Functions\nMessaging",
+    "studyTip": "La diferencia que debes aprender\nSi la pregunta habla de:\n\n\"run my application\"\n\n\"deploy my web app\"\n\n\"PaaS\"\n\n\"application hosting\"\n\n👉 App Engine\n\nSi la pregunta habla de:\n\n\"build an application\"\n\n\"user interactions\"\n\n\"authentication\"\n\n\"mobile app\"\n\n\"backend services\"\n\n👉 Firebase"
+  },
+  {
+    "id": "af14ab56-e8c5-46c0-9523-606079bf5a51",
+    "topic": "Infraestructura y Migración",
+    "prompt": "Tu negocio de retail online, ShopSphere, está migrando desde un centro de datos local hacia Google Cloud.\n\nUna de tus aplicaciones principales utiliza imágenes Linux personalizadas para sus servidores virtuales, las cuales deben ser transferidas al nuevo entorno cloud manteniendo su integridad y funcionalidad.\n\n¿Qué producto de Google Cloud deberías utilizar para gestionar y mantener estas imágenes personalizadas?",
+    "options": [
+      {
+        "id": "af14ab56-e8c5-46c0-9523-606079bf5a51-A",
+        "text": "App Engine Flexible Environment"
+      },
+      {
+        "id": "af14ab56-e8c5-46c0-9523-606079bf5a51-B",
+        "text": "Compute Engine"
+      },
+      {
+        "id": "af14ab56-e8c5-46c0-9523-606079bf5a51-C",
+        "text": "App Engine Standard Environment"
+      },
+      {
+        "id": "af14ab56-e8c5-46c0-9523-606079bf5a51-D",
+        "text": "Google Kubernetes Engine (GKE)"
+      }
+    ],
+    "correctOptionId": "af14ab56-e8c5-46c0-9523-606079bf5a51-B",
+    "justification": "Compute Engine\n\nCompute Engine es el servicio de máquinas virtuales de Google Cloud.\n\nPermite:\n\n✅ Crear VMs desde imágenes personalizadas.\n\n✅ Importar imágenes Linux.\n\n✅ Mantener configuraciones existentes.\n\n✅ Migraciones tipo Lift-and-Shift.\n\nEsta es exactamente la solución descrita.\n🧠 Cómo reconocer este patrón\n\nCuando aparezcan:\n\nVirtual Machines\nLinux\nOS Images\nCustom Images\nLift and Shift\n\nLa respuesta casi siempre será:\n\n➡️ Compute Engine",
+    "studyTip": "Concepto clave\n\nCompute Engine permite crear y administrar máquinas virtuales utilizando imágenes Linux personalizadas importadas desde entornos on-premises."
+  },
+  {
+    "id": "6a9aa349-349e-459a-ba70-36d7eb3b9e39",
+    "topic": "Optimización de costos",
+    "prompt": "Estás administrando un sitio web llamado WorkShiftsPro que programa y gestiona turnos de empleados utilizando instancias de Windows Server.\n\nActualmente ya posees las licencias necesarias de Windows Server.\n\nTu sitio sólo está activo durante horario laboral, por lo que puedes apagar las instancias durante los fines de semana.\n\nLas licencias de Windows Server vencen en un mes y deseas reducir los costos de licenciamiento.\n\n¿Qué deberías hacer?",
+    "options": [
+      {
+        "id": "6a9aa349-349e-459a-ba70-36d7eb3b9e39-A",
+        "text": "Renovar las licencias por 3 años más y negociar una reducción de costos con tu proveedor actual."
+      },
+      {
+        "id": "6a9aa349-349e-459a-ba70-36d7eb3b9e39-B",
+        "text": "Renovar las licencias por 2 años más y negociar una reducción de costos comprometiéndote a una renovación automática."
+      },
+      {
+        "id": "6a9aa349-349e-459a-ba70-36d7eb3b9e39-C",
+        "text": "Migrar las cargas de trabajo a Compute Engine utilizando un modelo Bring Your Own License (BYOL)."
+      },
+      {
+        "id": "6a9aa349-349e-459a-ba70-36d7eb3b9e39-D",
+        "text": "Migrar las cargas de trabajo a Compute Engine utilizando un modelo Pay-As-You-Go (PAYG)."
+      }
+    ],
+    "correctOptionId": "6a9aa349-349e-459a-ba70-36d7eb3b9e39-D",
+    "justification": "Si la pregunta enfatiza:\napagar VMs\nworkload intermitente\npagar sólo cuando se usa\n\n👉 PAYG\n\nSi la pregunta enfatiza:\nya tienes licencias válidas\ninversión existente\nreutilización de licencias\n\n👉 BYOL",
+    "studyTip": "Si la pregunta enfatiza:\napagar VMs\nworkload intermitente\npagar sólo cuando se usa\n\n👉 PAYG\n\nSi la pregunta enfatiza:\nya tienes licencias válidas\ninversión existente\nreutilización de licencias\n\n👉 BYOL"
+  },
+  {
+    "id": "755daa3c-2fdc-4644-baf5-80ad1f7cd428",
+    "topic": "Bases de Datos",
+    "prompt": "Imagina que estás administrando una plataforma de videojuegos en línea de rápido crecimiento llamada GamerzHub, que necesita manejar eficientemente una cantidad creciente de datos de jugadores y transacciones.\n\nPara garantizar que la plataforma pueda escalar sin problemas y ejecutar consultas SQL complejas sobre grandes volúmenes de datos históricos de juegos, ¿qué producto o servicio de Google Cloud debería utilizar GamerzHub?",
+    "options": [
+      {
+        "id": "755daa3c-2fdc-4644-baf5-80ad1f7cd428-A",
+        "text": "BigQuery"
+      },
+      {
+        "id": "755daa3c-2fdc-4644-baf5-80ad1f7cd428-B",
+        "text": "Cloud Bigtable"
+      },
+      {
+        "id": "755daa3c-2fdc-4644-baf5-80ad1f7cd428-C",
+        "text": "Pub/Sub"
+      },
+      {
+        "id": "755daa3c-2fdc-4644-baf5-80ad1f7cd428-D",
+        "text": "Cloud Spanner"
+      }
+    ],
+    "correctOptionId": "755daa3c-2fdc-4644-baf5-80ad1f7cd428-D",
+    "justification": "Cloud Spanner es una base de datos relacional distribuida globalmente que combina:\n\nSQL\nTransacciones ACID\nEscalabilidad horizontal\nAlta disponibilidad\nPalabras clave\nTransactions\nRelational database\nSQL\nStrong consistency\nScale",
+    "studyTip": "Cloud Spanner es una base de datos relacional distribuida globalmente que combina:\n\nSQL\nTransacciones ACID\nEscalabilidad horizontal\nAlta disponibilidad\nPalabras clave\nTransactions\nRelational database\nSQL\nStrong consistency\nScale"
+  },
+  {
+    "id": "09c68624-7804-4868-b474-c8cf8cb21730",
+    "topic": "Google Cloud Resource Hierarchy",
+    "prompt": "Tu empresa ficticia, Rainbow Threads, especializada en telas personalizadas y coloridas, está desarrollando un plan para migrar a Google Cloud con el fin de mejorar su plataforma de diseño en línea.\n\n¿Cuál es una buena práctica al configurar inicialmente tu entorno de Google Cloud para garantizar operaciones fluidas y eficientes?",
+    "options": [
+      {
+        "id": "09c68624-7804-4868-b474-c8cf8cb21730-A",
+        "text": "Crear un proyecto en Google Cloud Console por cada departamento de Rainbow Threads."
+      },
+      {
+        "id": "09c68624-7804-4868-b474-c8cf8cb21730-B",
+        "text": "Definir la jerarquía de recursos con un nodo de Organización (Organization) en la parte superior."
+      },
+      {
+        "id": "09c68624-7804-4868-b474-c8cf8cb21730-C",
+        "text": "Crear proyectos según las solicitudes de los miembros del equipo."
+      },
+      {
+        "id": "09c68624-7804-4868-b474-c8cf8cb21730-D",
+        "text": "Convertir a todos los miembros de Rainbow Threads en propietarios (Owners) de los proyectos."
+      }
+    ],
+    "correctOptionId": "09c68624-7804-4868-b474-c8cf8cb21730-B",
+    "justification": "Esta es la recomendación oficial.\n\nPermite:\n\n✅ Gobernanza centralizada.\n\n✅ Gestión de permisos.\n\n✅ Organización de proyectos.\n\n✅ Aplicación de políticas a toda la empresa.\n🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nGovernance\nOrganization\nResource hierarchy\nEnterprise setup\nInitial configuration\n\nPiensa inmediatamente en:\n\n➡️ Organization Node\nConcepto clave\n\nLa mejor práctica inicial para una empresa es definir una jerarquía de recursos comenzando con un nodo de Organización.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nGovernance\nOrganization\nResource hierarchy\nEnterprise setup\nInitial configuration\n\nPiensa inmediatamente en:\n\n➡️ Organization Node"
+  },
+  {
+    "id": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49",
+    "topic": "Migración a Google Cloud",
+    "prompt": "PixieArt, una empresa que ejecuta sus aplicaciones de diseño creativo en una nube privada sobre un hipervisor, ha decidido mover sus operaciones a Google Cloud lo más rápido posible.\n\nPixieArt quiere:\n\nRealizar mínimos cambios en su entorno actual.\nAprovechar la máxima cantidad de servicios administrados por Google.\n\n¿Qué debería hacer PixieArt?",
+    "options": [
+      {
+        "id": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49-A",
+        "text": "Migrar las cargas de trabajo a Google Cloud VMware Engine."
+      },
+      {
+        "id": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49-B",
+        "text": "Migrar las cargas de trabajo a Compute Engine."
+      },
+      {
+        "id": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49-C",
+        "text": "Migrar las cargas de trabajo a Bare Metal Solution."
+      },
+      {
+        "id": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49-D",
+        "text": "Migrar las cargas de trabajo a Google Kubernetes Engine (GKE)."
+      }
+    ],
+    "correctOptionId": "4c70f7f5-a56d-4e53-8c44-36cfbba03f49-A",
+    "justification": "Google Cloud VMware Engine\n\nPermite:\n\n✅ Migrar VMware prácticamente sin cambios.\n\n✅ Mantener herramientas conocidas.\n\n✅ Lift-and-Shift rápido.\n\n✅ Servicio administrado por Google.\n\nEs exactamente el escenario descrito.",
+    "studyTip": "Concepto clave\n\nGoogle Cloud VMware Engine permite migrar entornos VMware a Google Cloud con cambios mínimos y una estrategia de lift-and-shift rápida.\n\nPalabras clave\nVMware\nHypervisor\nLift and Shift\nMinimal changes\nFast migration"
+  },
+  {
+    "id": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93",
+    "topic": "Infraestructura Global y Compliance",
+    "prompt": "Eres el CTO de HealthNet Solutions, una plataforma global de telemedicina que busca proporcionar consultas médicas rápidas y eficientes a usuarios de todo el mundo.\n\nDebido a regulaciones internacionales, los datos de los pacientes deben almacenarse en regiones geográficas específicas, pero dichos datos deben seguir siendo accesibles globalmente.\n\nNecesitas diseñar la arquitectura y estrategia de despliegue para cumplir estos requisitos.\n\n¿Qué deberías hacer?",
+    "options": [
+      {
+        "id": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93-A",
+        "text": "Seleccionar un proveedor de nube pública que opere únicamente en el área geográfica requerida."
+      },
+      {
+        "id": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93-B",
+        "text": "Seleccionar un proveedor de nube privada que replique globalmente el almacenamiento de datos para acceso rápido."
+      },
+      {
+        "id": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93-C",
+        "text": "Seleccionar un proveedor de nube pública que garantice la ubicación de los datos en la región geográfica requerida."
+      },
+      {
+        "id": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93-D",
+        "text": "Seleccionar un proveedor de nube privada que opere únicamente en el área geográfica requerida."
+      }
+    ],
+    "correctOptionId": "38ae7ae7-2d69-4f64-9a47-2f22f509fd93-C",
+    "justification": "Esta es exactamente la capacidad que ofrece Google Cloud.\n\nPuedes:\n\n✅ Elegir regiones específicas.\n\n✅ Cumplir regulaciones.\n\n✅ Mantener acceso global a las aplicaciones.\n🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nCompliance\nRegulations\nData residency\nGeographic requirements\nData location\n\nPiensa inmediatamente en:\n\n➡️ Elegir la región adecuada en una nube pública.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nCompliance\nRegulations\nData residency\nGeographic requirements\nData location\n\nPiensa inmediatamente en:\n\n➡️ Elegir la región adecuada en una nube pública."
+  },
+  {
+    "id": "0795bbdc-c309-4b2a-a971-fd87898e956c",
+    "topic": "Inteligencia Artificial y Machine Learning",
+    "prompt": "Tu empresa, SnapArt Studios, se especializa en la creación de obras de arte digitales personalizadas para sus clientes.\n\nPara mejorar la experiencia del usuario, SnapArt Studios quiere identificar y categorizar automáticamente diferentes elementos en una gran colección de imágenes cargadas por los usuarios utilizando Machine Learning.",
+    "options": [
+      {
+        "id": "0795bbdc-c309-4b2a-a971-fd87898e956c-A",
+        "text": "BigQuery ML"
+      },
+      {
+        "id": "0795bbdc-c309-4b2a-a971-fd87898e956c-B",
+        "text": "AutoML Video Intelligence"
+      },
+      {
+        "id": "0795bbdc-c309-4b2a-a971-fd87898e956c-C",
+        "text": "Cloud Vision API"
+      },
+      {
+        "id": "0795bbdc-c309-4b2a-a971-fd87898e956c-D",
+        "text": "AutoML Tables"
+      }
+    ],
+    "correctOptionId": "0795bbdc-c309-4b2a-a971-fd87898e956c-C",
+    "justification": "Cloud Vision API\n\nCloud Vision API permite:\n\n✅ Detectar objetos.\n\n✅ Etiquetar imágenes.\n\n✅ Clasificar contenido.\n\n✅ Reconocer texto (OCR).\n\n✅ Detectar rostros.\n\n✅ Analizar imágenes sin entrenar modelos.\n\nEs exactamente lo que describe el escenario.\nConcepto clave\n\nCloud Vision API permite analizar imágenes mediante modelos preentrenados para detectar objetos, etiquetas, texto y otros elementos visuales.\n\nPalabras clave\nImages\nLabels\nCategorization\nObject Detection\nOCR",
+    "studyTip": "Concepto clave\n\nCloud Vision API permite analizar imágenes mediante modelos preentrenados para detectar objetos, etiquetas, texto y otros elementos visuales.\n\nPalabras clave\nImages\nLabels\nCategorization\nObject Detection\nOCR"
+  },
+  {
+    "id": "b93296c3-b412-4821-8a3f-dcc0ca644f2e",
+    "topic": "Networking y Seguridad",
+    "prompt": "Imagina que administras una plataforma de videojuegos llamada GameSphere, que opera completamente sobre instancias de máquinas virtuales de Compute Engine.\n\nGameSphere tiene una política de seguridad estricta:\n\nLas máquinas virtuales NO deben acceder a Internet pública.\n\nSin embargo, los servidores del juego necesitan interactuar con:\n\nBigQuery\nCloud Storage\n\nutilizando sus interfaces públicas, sin incumplir dicha política.\n\n¿Qué producto o funcionalidad de Google Cloud debería utilizar GameSphere?",
+    "options": [
+      {
+        "id": "b93296c3-b412-4821-8a3f-dcc0ca644f2e-A",
+        "text": "Identity-Aware Proxy (IAP)"
+      },
+      {
+        "id": "b93296c3-b412-4821-8a3f-dcc0ca644f2e-B",
+        "text": "Cloud NAT"
+      },
+      {
+        "id": "b93296c3-b412-4821-8a3f-dcc0ca644f2e-C",
+        "text": "VPC Internal Load Balancers"
+      },
+      {
+        "id": "b93296c3-b412-4821-8a3f-dcc0ca644f2e-D",
+        "text": "Private Google Access"
+      }
+    ],
+    "correctOptionId": "b93296c3-b412-4821-8a3f-dcc0ca644f2e-D",
+    "justification": "Private Google Access\n\nPermite:\n\n✅ Acceso a APIs de Google.\n\n✅ Acceso a BigQuery.\n\n✅ Acceso a Cloud Storage.\n\n✅ Sin IP pública.\n\n✅ Sin exponer las VMs a Internet.\n🎯 Tip de examen Digital Leader\nSi aparecen juntas estas palabras:\nBigQuery\nCloud Storage\nGoogle APIs\nNo public IP\nNo Internet\n\nPiensa inmediatamente en:\n\n➡️ Private Google Access\nConcepto clave\n\nPrivate Google Access permite que instancias sin IP pública accedan a servicios de Google Cloud como BigQuery y Cloud Storage.",
+    "studyTip": "Concepto clave\n\nPrivate Google Access permite que instancias sin IP pública accedan a servicios de Google Cloud como BigQuery y Cloud Storage."
+  },
+  {
+    "id": "a00914c3-3a58-4b09-8068-881207fa2a76",
+    "topic": "Almacenamiento (Storage)",
+    "prompt": "Tu empresa, PixelPerfection Studio, está buscando una forma rentable de almacenar diversos tipos de archivos multimedia, incluyendo:\n\nArchivos de diseño.\nImágenes de alta resolución.\nContenido de video.\n\nAdemás, necesita poder acceder y compartir estos archivos de forma segura entre distintos equipos y clientes.\n\n¿Qué producto o servicio de Google Cloud debería utilizar?",
+    "options": [
+      {
+        "id": "a00914c3-3a58-4b09-8068-881207fa2a76-A",
+        "text": "Cloud Storage"
+      },
+      {
+        "id": "a00914c3-3a58-4b09-8068-881207fa2a76-B",
+        "text": "Cloud SQL"
+      },
+      {
+        "id": "a00914c3-3a58-4b09-8068-881207fa2a76-C",
+        "text": "Cloud Spanner"
+      },
+      {
+        "id": "a00914c3-3a58-4b09-8068-881207fa2a76-D",
+        "text": "BigQuery"
+      }
+    ],
+    "correctOptionId": "a00914c3-3a58-4b09-8068-881207fa2a76-A",
+    "justification": "Cloud Storage\n\nCloud Storage está diseñado para:\n\n✅ Imágenes\n\n✅ Videos\n\n✅ Archivos PDF\n\n✅ Backups\n\n✅ Archivos multimedia\n\n✅ Compartición segura mediante IAM y URLs firmadas\n\nAdemás:\n\n✅ Muy rentable para grandes volúmenes de archivos.\n\nConcepto clave\n\nCloud Storage es el servicio de almacenamiento de objetos de Google Cloud para archivos no estructurados como imágenes, videos, documentos y backups.",
+    "studyTip": "🧠 Cómo reconocer Cloud Storage\n\nCuando aparezcan palabras como:\n\nImages\nVideos\nDocuments\nFiles\nBackups\nMedia Assets\n\nPiensa inmediatamente en:\n\n➡️ Cloud Storage"
+  },
+  {
+    "id": "07193cfa-7ba2-4fab-8369-1168d8485a43",
+    "topic": "Optimización de Costos",
+    "prompt": "Tu empresa ficticia, EcoGrow, administra varias iniciativas de agricultura urbana a través de distintas plataformas digitales, todas asociadas a una única cuenta de facturación.\n\nLos gastos operativos de cada plataforma fluctúan mensualmente, pero el gasto total combinado entre todas ellas se mantiene relativamente estable.\n\nEcoGrow desea optimizar sus costos.\n\n¿Qué estrategia debería implementar?",
+    "options": [
+      {
+        "id": "07193cfa-7ba2-4fab-8369-1168d8485a43-A",
+        "text": "Comprar un compromiso (commitment) para cada plataforma basado en su uso mínimo típico."
+      },
+      {
+        "id": "07193cfa-7ba2-4fab-8369-1168d8485a43-B",
+        "text": "Crear una cuenta de facturación separada para cada plataforma y asociar cada una a su propia cuenta."
+      },
+      {
+        "id": "07193cfa-7ba2-4fab-8369-1168d8485a43-C",
+        "text": "Habilitar el uso compartido de descuentos por compromiso (Committed Use Discount Sharing) y comprar un compromiso basado en el uso combinado de todas las plataformas."
+      },
+      {
+        "id": "07193cfa-7ba2-4fab-8369-1168d8485a43-D",
+        "text": "Consolidar todas las operaciones de las distintas plataformas en una única plataforma unificada."
+      }
+    ],
+    "correctOptionId": "07193cfa-7ba2-4fab-8369-1168d8485a43-C",
+    "justification": "Esta es la respuesta clásica de Google.\n\nBeneficios:\n\n✅ Aprovecha el consumo agregado.\n\n✅ Maximiza el descuento.\n\n✅ Reduce desperdicio.\n\n✅ Funciona especialmente bien cuando los consumos individuales fluctúan pero el total es estable.\n\n🎯 Tip de examen Digital Leader\nSi ves:\nSingle billing account\nMultiple projects\nMultiple platforms\nFluctuating usage\nStable overall consumption\n\nPiensa inmediatamente en:\n\n➡️ Committed Use Discount Sharing\nConcepto clave\n\nCuando varios proyectos o plataformas tienen consumos variables pero un gasto agregado estable, Google recomienda compartir los descuentos por compromiso a nivel de cuenta de facturación.",
+    "studyTip": "Concepto clave\n\nCuando varios proyectos o plataformas tienen consumos variables pero un gasto agregado estable, Google recomienda compartir los descuentos por compromiso a nivel de cuenta de facturación."
+  },
+  {
+    "id": "2c2539c3-cc51-481d-ac49-8dee703e3fbb",
+    "topic": "Seguridad y Protección de Datos",
+    "prompt": "En PetPal, una plataforma ficticia de adopción de mascotas, el equipo busca mejorar la seguridad de la información personal de sus usuarios, como:\n\nNombres\nDirecciones\nDatos de contacto\n\nque se recopilan durante el proceso de adopción.\n\n¿Qué producto de Google Cloud deberían implementar para reducir específicamente los riesgos asociados al manejo de Información de Identificación Personal (PII)?",
+    "options": [
+      {
+        "id": "2c2539c3-cc51-481d-ac49-8dee703e3fbb-A",
+        "text": "Cloud Storage"
+      },
+      {
+        "id": "2c2539c3-cc51-481d-ac49-8dee703e3fbb-B",
+        "text": "Google Cloud Armor"
+      },
+      {
+        "id": "2c2539c3-cc51-481d-ac49-8dee703e3fbb-C",
+        "text": "Cloud Data Loss Prevention (DLP)"
+      },
+      {
+        "id": "2c2539c3-cc51-481d-ac49-8dee703e3fbb-D",
+        "text": "Secret Manager"
+      }
+    ],
+    "correctOptionId": "2c2539c3-cc51-481d-ac49-8dee703e3fbb-C",
+    "justification": "Cloud Data Loss Prevention (DLP)\n\nDiseñado específicamente para:\n\n✅ Detectar PII.\n\n✅ Clasificar datos sensibles.\n\n✅ Ocultar información confidencial.\n\n✅ Cumplimiento normativo.\n\nEsta es exactamente la necesidad descrita.\n🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nPII\nSensitive Data\nPersonal Information\nSocial Security Number\nCredit Card Data\nData Masking\n\nPiensa inmediatamente en:\n\n➡️ Cloud Data Loss Prevention (DLP)\n\nConcepto clave\n\nCloud DLP ayuda a descubrir, clasificar y proteger información sensible como datos personales identificables (PII).",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi la pregunta menciona:\nPII\nSensitive Data\nPersonal Information\nSocial Security Number\nCredit Card Data\nData Masking\n\nPiensa inmediatamente en:\n\n➡️ Cloud Data Loss Prevention (DLP)"
+  },
+  {
+    "id": "648ca096-ec0b-4f54-a04c-6509007edc73",
+    "topic": "Migración de Datos",
+    "prompt": "Tu empresa, Gourmet Recipes Inc., está migrando su extensa base de datos de recetas a Google Cloud.\n\nEsto implica transferir terabytes de datos desde servidores de archivos locales hacia Cloud Storage.\n\nLa empresa busca:\n\n✅ Una solución de migración automatizada.\n\n✅ Administrada por Google.\n\n✅ Que aproveche su conexión existente de Dedicated Interconnect.\n\n¿Qué producto o funcionalidad de Google Cloud debería utilizar?",
+    "options": [
+      {
+        "id": "648ca096-ec0b-4f54-a04c-6509007edc73-A",
+        "text": "Storage Transfer Service"
+      },
+      {
+        "id": "648ca096-ec0b-4f54-a04c-6509007edc73-B",
+        "text": "Migrate for Anthos"
+      },
+      {
+        "id": "648ca096-ec0b-4f54-a04c-6509007edc73-C",
+        "text": "BigQuery Data Transfer Service"
+      },
+      {
+        "id": "648ca096-ec0b-4f54-a04c-6509007edc73-D",
+        "text": "Transfer Appliance"
+      }
+    ],
+    "correctOptionId": "648ca096-ec0b-4f54-a04c-6509007edc73-A",
+    "justification": "Storage Transfer Service\n\nStorage Transfer Service está diseñado para:\n\n✅ Transferir datos desde sistemas on-premises.\n\n✅ Migrar a Cloud Storage.\n\n✅ Automatizar transferencias.\n\n✅ Aprovechar conexiones de red existentes (como Interconnect).\n\n✅ Ser un servicio administrado por Google.\n\nEs exactamente el escenario descrito.\n\n🎯 Tip de examen Digital Leader\nSi aparece:\nCloud Storage\nOn-premises\nAutomated migration\nExisting network connection\n\n➡️ Storage Transfer Service\n\nSi aparece:\nPetabytes\nNo network\nVery slow network\nPhysical device\n\n➡️ Transfer Appliance\n\nConcepto clave\n\nStorage Transfer Service permite transferir datos desde sistemas on-premises o nubes externas hacia Cloud Storage utilizando conexiones de red existentes.",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparece:\nCloud Storage\nOn-premises\nAutomated migration\nExisting network connection\n\n➡️ Storage Transfer Service\n\nSi aparece:\nPetabytes\nNo network\nVery slow network\nPhysical device\n\n➡️ Transfer Appliance"
+  },
+  {
+    "id": "0d74dc8d-2d2d-4705-aa4a-717416287514",
+    "topic": "Seguridad, Privacidad y Compliance",
+    "prompt": "Imagina una plataforma global de comercio electrónico llamada ShopGalaxy, que está migrando sus operaciones a Google Cloud.\n\n¿Qué medidas debería tomar ShopGalaxy para alinearse con las regulaciones de seguridad y privacidad y garantizar el cumplimiento de estándares internacionales durante esta migración?",
+    "options": [
+      {
+        "id": "0d74dc8d-2d2d-4705-aa4a-717416287514-A",
+        "text": "Cumplir con las regulaciones de seguridad y privacidad de datos en cada región geográfica donde opera."
+      },
+      {
+        "id": "0d74dc8d-2d2d-4705-aa4a-717416287514-B",
+        "text": "Cumplir con los estándares regionales de seguridad y privacidad porque reemplazan todas las regulaciones internacionales."
+      },
+      {
+        "id": "0d74dc8d-2d2d-4705-aa4a-717416287514-C",
+        "text": "Cumplir con los estándares internacionales de seguridad y privacidad porque reemplazan todas las regulaciones regionales."
+      },
+      {
+        "id": "0d74dc8d-2d2d-4705-aa4a-717416287514-D",
+        "text": "Cumplir con las regulaciones regionales de seguridad de datos porque son más complejas que las normas de privacidad."
+      }
+    ],
+    "correctOptionId": "0d74dc8d-2d2d-4705-aa4a-717416287514-A",
+    "justification": "Comply with data security and privacy regulations in each geographical region\n\nUna empresa global debe cumplir:\n\nGDPR en Europa.\nLeyes locales de privacidad en cada país.\nRequisitos regulatorios específicos según la región.\n\nEsta es la respuesta más completa y realista.\n\n🎯 Tip de examen Digital Leader\n\nSi aparecen palabras como:\n\nGlobal company\nWorldwide\nCompliance\nPrivacy\nRegulations\n\nLa respuesta suele apuntar a:\n\n➡️ Cumplir las regulaciones aplicables en cada región donde operas.\n\n\nConcepto clave\n\nLas organizaciones globales deben cumplir las regulaciones de seguridad y privacidad aplicables en cada región geográfica donde almacenan o procesan datos.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi aparecen palabras como:\n\nGlobal company\nWorldwide\nCompliance\nPrivacy\nRegulations\n\nLa respuesta suele apuntar a:\n\n➡️ Cumplir las regulaciones aplicables en cada región donde operas."
+  },
+  {
+    "id": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae",
+    "topic": "DevOps y CI/CD",
+    "prompt": "Tu empresa ficticia, CreativeTech Solutions, está desarrollando una nueva red social llamada FriendSphere, alojada en Google Cloud.\n\nActualmente, el equipo de desarrollo realiza manualmente:\n\nCompilaciones (builds)\nPruebas (testing)\nDespliegues (deployments)\n\nEsto genera ineficiencias.\n\nLa empresa quiere utilizar soluciones administradas de Google Cloud para:\n\n✅ Automatizar builds\n\n✅ Automatizar pruebas\n\n✅ Automatizar despliegues\n\n¿Qué producto o funcionalidad de Google Cloud debería utilizar?",
+    "options": [
+      {
+        "id": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae-A",
+        "text": "Cloud Scheduler"
+      },
+      {
+        "id": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae-B",
+        "text": "Cloud Code"
+      },
+      {
+        "id": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae-C",
+        "text": "Cloud Build"
+      },
+      {
+        "id": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae-D",
+        "text": "Cloud Deployment Manager"
+      }
+    ],
+    "correctOptionId": "bf4d7cfe-13d3-4314-81ed-3ff8a92ba8ae-C",
+    "justification": "Cloud Build\n\nCloud Build permite:\n\n✅ Automatizar builds.\n\n✅ Ejecutar pruebas.\n\n✅ Integrarse con GitHub/GitLab.\n\n✅ Automatizar despliegues.\n\n✅ Implementar CI/CD.\n\nEs exactamente el escenario descrito.\n\n🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nBuild\nTest\nDeploy\nCI/CD\nAutomation\n\nPiensa inmediatamente en:\n\n➡️ Cloud Build\n\nConcepto clave\n\nCloud Build es el servicio administrado de Google Cloud para automatizar compilaciones, pruebas y despliegues dentro de pipelines CI/CD.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nCuando aparezcan palabras como:\n\nBuild\nTest\nDeploy\nCI/CD\nAutomation\n\nPiensa inmediatamente en:\n\n➡️ Cloud Build"
+  },
+  {
+    "id": "9739ecc4-ddc2-4275-8dac-a7b4096dca17",
+    "topic": "Datos y Analítica",
+    "prompt": "Tu startup de redes sociales, PhotoSnap, quiere analizar los datos de interacción de los usuarios para mejorar las funcionalidades de la aplicación y la experiencia general de los usuarios.\n\nEl objetivo es:\n\n✅ Pagar únicamente por los datos almacenados.\n\n✅ Pagar únicamente por las consultas realizadas.\n\n¿Qué producto de Google Cloud debería elegir PhotoSnap para su Data Analytics Warehouse?",
+    "options": [
+      {
+        "id": "9739ecc4-ddc2-4275-8dac-a7b4096dca17-A",
+        "text": "Cloud SQL"
+      },
+      {
+        "id": "9739ecc4-ddc2-4275-8dac-a7b4096dca17-B",
+        "text": "Dataproc"
+      },
+      {
+        "id": "9739ecc4-ddc2-4275-8dac-a7b4096dca17-C",
+        "text": "Cloud Spanner"
+      },
+      {
+        "id": "9739ecc4-ddc2-4275-8dac-a7b4096dca17-D",
+        "text": "BigQuery"
+      }
+    ],
+    "correctOptionId": "9739ecc4-ddc2-4275-8dac-a7b4096dca17-D",
+    "justification": "BigQuery\n\nCumple exactamente con:\n\n✅ Data Warehouse.\n\n✅ Analytics.\n\n✅ SQL.\n\n✅ Serverless.\n\n✅ Pago por almacenamiento y consultas.\n\n🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nAnalytics\nData Warehouse\nReporting\nBusiness Intelligence\nQuery stored data\nPay for queries\n\nPiensa inmediatamente en:\n\n➡️ BigQuery\n\nConcepto clave\n\nBigQuery es el Data Warehouse serverless de Google Cloud que cobra principalmente por almacenamiento y consultas ejecutadas.",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nAnalytics\nData Warehouse\nReporting\nBusiness Intelligence\nQuery stored data\nPay for queries\n\nPiensa inmediatamente en:\n\n➡️ BigQuery"
+  },
+  {
+    "id": "16352822-3429-4b6b-aadb-d14d41cd12f2",
+    "topic": "Containers y Modernización de Aplicaciones",
+    "prompt": "Tu empresa, FreshEats, está desarrollando una nueva plataforma de reparto de comida en línea con una arquitectura basada en contenedores (containers) alojada en Google Cloud.\n\nComo se espera que la plataforma crezca significativamente, necesitas:\n\n✅ Gestionar el tráfico entre múltiples microservicios.\n\n✅ Tener alta seguridad y observabilidad.\n\n✅ Escalar dinámicamente según la demanda.\n\n✅ Control preciso sobre las políticas de escalamiento.\n\n¿Qué producto o servicio de Google Cloud debería utilizar FreshEats?",
+    "options": [
+      {
+        "id": "16352822-3429-4b6b-aadb-d14d41cd12f2-A",
+        "text": "Google Kubernetes Engine (GKE) cluster"
+      },
+      {
+        "id": "16352822-3429-4b6b-aadb-d14d41cd12f2-B",
+        "text": "App Engine"
+      },
+      {
+        "id": "16352822-3429-4b6b-aadb-d14d41cd12f2-C",
+        "text": "Cloud Run"
+      },
+      {
+        "id": "16352822-3429-4b6b-aadb-d14d41cd12f2-D",
+        "text": "Compute Engine virtual machines"
+      }
+    ],
+    "correctOptionId": "16352822-3429-4b6b-aadb-d14d41cd12f2-A",
+    "justification": "Google Kubernetes Engine (GKE)\n\nGKE proporciona:\n\n✅ Orquestación de contenedores.\n\n✅ Gestión de microservicios.\n\n✅ Escalado horizontal.\n\n✅ Políticas avanzadas de autoscaling.\n\n✅ Control detallado del tráfico.\n\n✅ Integración con Service Mesh.\n\nEs exactamente el escenario descrito.\n\n🎯 Tip de examen Digital Leader\nSi aparecen juntas estas palabras:\nMicroservices\nContainers\nTraffic Management\nScaling Policies\nControl\n\nPiensa inmediatamente en:\n\n➡️ Google Kubernetes Engine\n\nConcepto clave\n\nGKE es la plataforma administrada de Kubernetes de Google Cloud para ejecutar arquitecturas complejas basadas en contenedores y microservicios con control avanzado sobre tráfico y escalamiento.",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparecen juntas estas palabras:\nMicroservices\nContainers\nTraffic Management\nScaling Policies\nControl\n\nPiensa inmediatamente en:\n\n➡️ Google Kubernetes Engine"
+  },
+  {
+    "id": "25da529f-fc5c-479c-9cbd-7097204af301",
+    "topic": "Seguridad y Compliance",
+    "prompt": "Tu empresa, SecureNet Solutions, ha desarrollado una aplicación de ciberseguridad llamada ShieldGuard, diseñada para proteger pequeñas empresas de amenazas en línea.\n\nPara mejorar sus capacidades, necesitas un producto o servicio de Google Cloud que pueda:\n\n✅ Proporcionar recomendaciones personalizadas.\n\n✅ Basarse en riesgos de seguridad identificados.\n\n✅ Detectar violaciones de cumplimiento (compliance).\n\n¿Qué servicio de Google Cloud sería la mejor opción?",
+    "options": [
+      {
+        "id": "25da529f-fc5c-479c-9cbd-7097204af301-A",
+        "text": "Google Cloud Firewalls"
+      },
+      {
+        "id": "25da529f-fc5c-479c-9cbd-7097204af301-B",
+        "text": "Security Command Center"
+      },
+      {
+        "id": "25da529f-fc5c-479c-9cbd-7097204af301-C",
+        "text": "Cloud Deployment Manager"
+      },
+      {
+        "id": "25da529f-fc5c-479c-9cbd-7097204af301-D",
+        "text": "Google Cloud Armor"
+      }
+    ],
+    "correctOptionId": "25da529f-fc5c-479c-9cbd-7097204af301-B",
+    "justification": "Security Command Center\n\nProporciona:\n\n✅ Hallazgos de seguridad (findings).\n\n✅ Detección de vulnerabilidades.\n\n✅ Evaluación de riesgos.\n\n✅ Recomendaciones de remediación.\n\n✅ Monitoreo de compliance.\n\nEs exactamente lo que describe la pregunta.\n\n\n🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nVulnerabilities\nSecurity risks\nFindings\nRecommendations\nCompliance\n\nPiensa inmediatamente en:\n\n➡️ Security Command Center",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nVulnerabilities\nSecurity risks\nFindings\nRecommendations\nCompliance\n\nPiensa inmediatamente en:\n\n➡️ Security Command Center"
+  },
+  {
+    "id": "c85ae565-6d5f-4398-b992-d980b675f546",
+    "topic": "Hybrid Cloud & Multi-Cloud",
+    "prompt": "Imagina que eres el CTO de una plataforma de comercio electrónico de rápido crecimiento llamada ShopEase, que necesita desplegar aplicaciones de manera uniforme a través de múltiples proveedores de nube mientras mantiene una plataforma consistente.\n\nTu objetivo es:\n\n✅ Extender los servicios de Google Cloud a un entorno de TI diverso.\n\n✅ Operar en múltiples nubes (multi-cloud).\n\n✅ Mantener consistencia operacional.\n\n✅ Facilitar escalabilidad y administración.\n\n¿Qué producto de Google Cloud utilizarías para lograr esta integración y capacidad multi-cloud?",
+    "options": [
+      {
+        "id": "c85ae565-6d5f-4398-b992-d980b675f546-A",
+        "text": "Google Kubernetes Engine (GKE)"
+      },
+      {
+        "id": "c85ae565-6d5f-4398-b992-d980b675f546-B",
+        "text": "Virtual Public Cloud"
+      },
+      {
+        "id": "c85ae565-6d5f-4398-b992-d980b675f546-C",
+        "text": "Compute Engine"
+      },
+      {
+        "id": "c85ae565-6d5f-4398-b992-d980b675f546-D",
+        "text": "Anthos"
+      }
+    ],
+    "correctOptionId": "c85ae565-6d5f-4398-b992-d980b675f546-D",
+    "justification": "Anthos\n\nAnthos permite:\n\n✅ Ejecutar aplicaciones en múltiples nubes.\n\n✅ Gestionar Kubernetes en distintos proveedores.\n\n✅ Operación consistente.\n\n✅ Modernización híbrida y multi-cloud.\n\nEs exactamente el escenario descrito.\n🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nMulti-cloud\nHybrid cloud\nMultiple providers\nConsistent operations\nAcross clouds\n\nPiensa inmediatamente en:\n\n➡️ Anthos",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparecen estas palabras:\nMulti-cloud\nHybrid cloud\nMultiple providers\nConsistent operations\nAcross clouds\n\nPiensa inmediatamente en:\n\n➡️ Anthos"
+  },
+  {
+    "id": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9",
+    "topic": "Bases de Datos",
+    "prompt": "Tu empresa ficticia, GlobalFunds, está creando una aplicación móvil innovadora para:\n\nTransferencias internacionales de dinero.\nGestión de billeteras digitales.\n\nLa funcionalidad principal exige que:\n\n✅ Cada transacción financiera tenga consistencia estricta.\n\n✅ Los datos sean precisos y confiables.\n\n✅ El sistema pueda crecer enormemente en volumen de transacciones.\n\n✅ La escalabilidad sea prácticamente ilimitada.\n\n¿Qué producto de Google Cloud debería seleccionar GlobalFunds?",
+    "options": [
+      {
+        "id": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9-A",
+        "text": "Cloud SQL"
+      },
+      {
+        "id": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9-B",
+        "text": "Cloud Storage"
+      },
+      {
+        "id": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9-C",
+        "text": "Firestore"
+      },
+      {
+        "id": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9-D",
+        "text": "Cloud Spanner"
+      }
+    ],
+    "correctOptionId": "d0478cfc-7ad0-4ff1-8a61-9cd1db485ac9-D",
+    "justification": "Cloud Spanner\n\nCumple exactamente:\n\n✅ SQL.\n\n✅ Consistencia fuerte.\n\n✅ Transacciones ACID.\n\n✅ Escalabilidad masiva.\n\n✅ Disponibilidad global.\n🎯 Tip de examen Digital Leader\nSi aparecen juntas estas palabras:\nFinancial transactions\nBanking\nPayments\nWallet\nStrong consistency\nGlobal scale\n\nPiensa inmediatamente en:\n\n➡️ Cloud Spanner",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparecen juntas estas palabras:\nFinancial transactions\nBanking\nPayments\nWallet\nStrong consistency\nGlobal scale\n\nPiensa inmediatamente en:\n\n➡️ Cloud Spanner"
+  },
+  {
+    "id": "66f96a09-6d46-44f9-83fd-73e8a1146815",
+    "topic": "Cloud Financial Management (FinOps)",
+    "prompt": "TechNova, una startup móvil de rápido crecimiento, necesita gestionar estratégicamente los costos de su infraestructura en la nube para asegurar un crecimiento sostenible.\n\n¿Qué enfoque debería adoptar TechNova?",
+    "options": [
+      {
+        "id": "66f96a09-6d46-44f9-83fd-73e8a1146815-A",
+        "text": "Revisar frecuentemente los costos de los recursos cloud, ya que los costos cambian con frecuencia según el uso."
+      },
+      {
+        "id": "66f96a09-6d46-44f9-83fd-73e8a1146815-B",
+        "text": "Revisar los costos de los recursos cloud anualmente como parte de la planificación general del presupuesto."
+      },
+      {
+        "id": "66f96a09-6d46-44f9-83fd-73e8a1146815-C",
+        "text": "Si TechNova usa únicamente recursos cloud, los costos de infraestructura ya no forman parte del presupuesto general."
+      },
+      {
+        "id": "66f96a09-6d46-44f9-83fd-73e8a1146815-D",
+        "text": "Involucrar a menos personas en la planificación de recursos cloud que las que participaban en la planificación on-premises."
+      }
+    ],
+    "correctOptionId": "66f96a09-6d46-44f9-83fd-73e8a1146815-A",
+    "justification": "Review cloud resource costs frequently\n\nEsta es una práctica recomendada de FinOps.\n\n¿Por qué?\n\nEl consumo cambia constantemente.\nSe pueden crear recursos nuevos.\nEl autoscaling puede aumentar costos.\nNuevos proyectos pueden impactar el gasto.\n\nConcepto clave\n\nLos costos cloud son variables y dependen del consumo, por lo que deben monitorearse frecuentemente para optimizar gastos y evitar desviaciones presupuestarias.\n\nPor eso los costos deben monitorearse regularmente.\n🎯 Tip de examen Digital Leader\n\nCuando veas palabras como:\n\nCost optimization\nBudget\nSpending\nResource costs\nCloud expenses\n\nPiensa en:\n\n➡️ Monitoreo continuo y FinOps.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nCuando veas palabras como:\n\nCost optimization\nBudget\nSpending\nResource costs\nCloud expenses\n\nPiensa en:\n\n➡️ Monitoreo continuo y FinOps."
+  },
+  {
+    "id": "c93a6c80-beb6-418e-b66e-d67ce3650f0f",
+    "topic": "Fundamentos de Cloud Computing",
+    "prompt": "En CreativeApps Inc., una startup en rápido crecimiento enfocada en desarrollar aplicaciones móviles innovadoras, el equipo busca una solución que ofrezca una disponibilidad prácticamente ilimitada de recursos de cómputo para manejar picos impredecibles de carga de trabajo, sin necesidad de comprar ni aprovisionar nuevo hardware.\n\n¿Cuál sería la mejor opción?",
+    "options": [
+      {
+        "id": "c93a6c80-beb6-418e-b66e-d67ce3650f0f-A",
+        "text": "Public Cloud"
+      },
+      {
+        "id": "c93a6c80-beb6-418e-b66e-d67ce3650f0f-B",
+        "text": "Containers"
+      },
+      {
+        "id": "c93a6c80-beb6-418e-b66e-d67ce3650f0f-C",
+        "text": "Private Cloud"
+      },
+      {
+        "id": "c93a6c80-beb6-418e-b66e-d67ce3650f0f-D",
+        "text": "Microservices"
+      }
+    ],
+    "correctOptionId": "c93a6c80-beb6-418e-b66e-d67ce3650f0f-A",
+    "justification": "Public Cloud\n\nLa nube pública ofrece:\n\n✅ Elasticidad.\n\n✅ Escalabilidad prácticamente ilimitada.\n\n✅ Recursos bajo demanda.\n\n✅ Sin compra de hardware.\n\nEs exactamente lo que describe la pregunta.\n\nConcepto clave\n\nLa nube pública ofrece elasticidad y capacidad prácticamente ilimitada, permitiendo escalar recursos según la demanda sin adquirir infraestructura física.\n\n🎯 Tip de examen Digital Leader\n\nSi ves frases como:\n\nNear unlimited resources\nNo hardware procurement\nElasticity\nScale on demand\nUnpredictable workloads\n\nPiensa inmediatamente en:\n\n➡️ Public Cloud",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi ves frases como:\n\nNear unlimited resources\nNo hardware procurement\nElasticity\nScale on demand\nUnpredictable workloads\n\nPiensa inmediatamente en:\n\n➡️ Public Cloud"
+  },
+  {
+    "id": "f43e84c4-be59-4828-8724-fcbdf2e8395c",
+    "topic": "Bases de Datos",
+    "prompt": "Tu empresa, SensorWorld, está lanzando una aplicación llamada GlobalSensorNet, diseñada para recopilar enormes cantidades de datos provenientes de millones de sensores distribuidos por todo el mundo.\n\nLa aplicación requiere una base de datos capaz de proporcionar:\n\n✅ Almacenamiento global.\n\n✅ Muy alta velocidad.\n\n✅ Gran volumen de datos.\n\n✅ Datos no estructurados (unstructured data).\n\n¿Qué producto de Google Cloud debería elegir SensorWorld?",
+    "options": [
+      {
+        "id": "f43e84c4-be59-4828-8724-fcbdf2e8395c-A",
+        "text": "Firestore"
+      },
+      {
+        "id": "f43e84c4-be59-4828-8724-fcbdf2e8395c-B",
+        "text": "Cloud Data Fusion"
+      },
+      {
+        "id": "f43e84c4-be59-4828-8724-fcbdf2e8395c-C",
+        "text": "Cloud SQL"
+      },
+      {
+        "id": "f43e84c4-be59-4828-8724-fcbdf2e8395c-D",
+        "text": "Cloud Bigtable"
+      }
+    ],
+    "correctOptionId": "f43e84c4-be59-4828-8724-fcbdf2e8395c-D",
+    "justification": "Cloud Bigtable\n\nBigtable ofrece:\n\n✅ NoSQL.\n\n✅ Escala masiva.\n\n✅ Muy alto rendimiento.\n\n✅ Casos IoT.\n\n✅ Series temporales.\n\n✅ Millones de registros por segundo.\n\nConcepto clave\n\nCloud Bigtable es una base de datos NoSQL altamente escalable diseñada para cargas masivas de datos, especialmente IoT, telemetría y series temporales.\n\n\n🎯 Tip de examen Digital Leader\n\nSi ves palabras como:\n\nSensors\nIoT\nTelemetry\nTime-series\nMassive scale\nHigh throughput\n\nPiensa inmediatamente en:\n\n➡️ Cloud Bigtable",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi ves palabras como:\n\nSensors\nIoT\nTelemetry\nTime-series\nMassive scale\nHigh throughput\n\nPiensa inmediatamente en:\n\n➡️ Cloud Bigtable"
+  },
+  {
+    "id": "21f5cd90-2698-491a-a946-f491b249fce8",
+    "topic": "Machine Learning y Analítica",
+    "prompt": "Imagina que administras una tienda online llamada TechTronics, especializada en la venta de gadgets y productos electrónicos.\n\nQuieres mejorar tus estrategias de marketing prediciendo el comportamiento de compra de los visitantes del sitio web.\n\nEl equipo:\n\n✅ Tiene experiencia en bases de datos.\n\n❌ Tiene poca experiencia en Machine Learning.\n\nQuieres aprovechar el conocimiento en bases de datos y aun así construir un modelo de Machine Learning efectivo.\n\n¿Qué producto o servicio de Google Cloud debería elegir TechTronics?",
+    "options": [
+      {
+        "id": "21f5cd90-2698-491a-a946-f491b249fce8-A",
+        "text": "BigQuery ML"
+      },
+      {
+        "id": "21f5cd90-2698-491a-a946-f491b249fce8-B",
+        "text": "LookML"
+      },
+      {
+        "id": "21f5cd90-2698-491a-a946-f491b249fce8-C",
+        "text": "TensorFlow"
+      },
+      {
+        "id": "21f5cd90-2698-491a-a946-f491b249fce8-D",
+        "text": "Cloud SQL"
+      }
+    ],
+    "correctOptionId": "21f5cd90-2698-491a-a946-f491b249fce8-A",
+    "justification": "BigQuery ML\n\nPermite:\n\n✅ Crear modelos ML usando SQL.\n\n✅ Aprovechar conocimientos de bases de datos.\n\n✅ Analizar comportamiento de clientes.\n\n✅ Reducir la necesidad de expertos en ML.\n\nEs exactamente lo que describe la pregunta.\n\nConcepto clave\n\nBigQuery ML permite crear y ejecutar modelos de Machine Learning utilizando SQL directamente sobre los datos almacenados en BigQuery.\n\n\n🎯 Tip de examen Digital Leader\n\nSi aparecen juntas estas frases:\n\nSQL\nDatabase team\nLimited ML experience\nPredictive analytics\nMachine learning\n\nPiensa inmediatamente en:\n\n➡️ BigQuery ML",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi aparecen juntas estas frases:\n\nSQL\nDatabase team\nLimited ML experience\nPredictive analytics\nMachine learning\n\nPiensa inmediatamente en:\n\n➡️ BigQuery ML"
+  },
+  {
+    "id": "860301d2-bce7-4355-980d-0f34f5b7e39d",
+    "topic": "Cloud Economics y Cost Optimization",
+    "prompt": "Tu startup de streaming de video, Streamify, lanzará un gran evento dentro de dos semanas que requerirá un aumento significativo de capacidad de cómputo para transmitir y procesar contenido de video.\n\nDespués del evento:\n\n✅ La demanda volverá a los niveles normales.\n\n¿Cuál es la forma más rentable (cost-effective) de manejar este aumento temporal de recursos?",
+    "options": [
+      {
+        "id": "860301d2-bce7-4355-980d-0f34f5b7e39d-A",
+        "text": "Utilizar un Committed Use Discount para reservar una máquina virtual muy potente."
+      },
+      {
+        "id": "860301d2-bce7-4355-980d-0f34f5b7e39d-B",
+        "text": "Comprar una computadora física muy potente."
+      },
+      {
+        "id": "860301d2-bce7-4355-980d-0f34f5b7e39d-C",
+        "text": "Iniciar una máquina virtual muy potente sin utilizar un Committed Use Discount."
+      },
+      {
+        "id": "860301d2-bce7-4355-980d-0f34f5b7e39d-D",
+        "text": "Comprar múltiples computadoras físicas y distribuir la carga entre ellas."
+      }
+    ],
+    "correctOptionId": "860301d2-bce7-4355-980d-0f34f5b7e39d-C",
+    "justification": "Iniciar una VM potente sin compromiso\n\nVentajas:\n\n✅ Pago por uso.\n\n✅ Escalado temporal.\n\n✅ Sin contratos largos.\n\n✅ La apagas cuando termine el evento.\n\nEs exactamente el beneficio de la nube.\n\nConcepto clave\n\nPara cargas temporales o eventos puntuales, la opción más económica suele ser aprovisionar recursos bajo demanda y apagarlos cuando ya no sean necesarios.\n\n🎯 Tip de examen Digital Leader\nSi aparece:\nTemporary demand\nSeasonal traffic\nEvent\nShort-term growth\nWorkload spike\n\nPiensa:\n\n➡️ Recursos bajo demanda.\n\n➡️ Pay-as-you-go.\n\nNO en compromisos de largo plazo.",
+    "studyTip": "🎯 Tip de examen Digital Leader\nSi aparece:\nTemporary demand\nSeasonal traffic\nEvent\nShort-term growth\nWorkload spike\n\nPiensa:\n\n➡️ Recursos bajo demanda.\n\n➡️ Pay-as-you-go.\n\nNO en compromisos de largo plazo."
+  },
+  {
+    "id": "a092ea68-185b-4c39-ba39-34cf6eec4e62",
+    "topic": "Gobernanza y Organización de Recursos",
+    "prompt": "Tu empresa, PictoVisions, crea arte digital de alta resolución para clientes de todo el mundo y quiere garantizar que sus estaciones de dibujo virtuales (máquinas virtuales) no puedan comunicarse con Internet ni obtener direcciones IP externas.\n\nAdemás, la empresa espera crear nuevos departamentos y nuevos proyectos próximamente.\n\n¿Cómo puedes asegurarte de que todas las máquinas virtuales actuales y futuras estén impedidas de obtener una IP externa?",
+    "options": [
+      {
+        "id": "a092ea68-185b-4c39-ba39-34cf6eec4e62-A",
+        "text": "Definir una política organizacional en el nodo raíz de la organización para restringir que las máquinas virtuales tengan una IP externa."
+      },
+      {
+        "id": "a092ea68-185b-4c39-ba39-34cf6eec4e62-B",
+        "text": "Definir una política organizacional en todas las carpetas (folders) existentes de los departamentos."
+      },
+      {
+        "id": "a092ea68-185b-4c39-ba39-34cf6eec4e62-C",
+        "text": "Definir una política organizacional en todos los proyectos existentes."
+      },
+      {
+        "id": "a092ea68-185b-4c39-ba39-34cf6eec4e62-D",
+        "text": "Comunicar a los distintos departamentos que configuren manualmente cada nueva máquina virtual sin IP externa."
+      }
+    ],
+    "correctOptionId": "a092ea68-185b-4c39-ba39-34cf6eec4e62-A",
+    "justification": "Si defines una política en:\n\nOrganization\n\nLa política se hereda automáticamente a:\n\n✅ Todos los folders.\n\n✅ Todos los proyectos.\n\n✅ Todas las VMs actuales.\n\n✅ Todos los proyectos futuros.\n\n✅ Todos los departamentos futuros.\n\nEs exactamente lo que busca la pregunta.\n\nConcepto clave\n\nLas Organization Policies aplicadas en el nodo raíz se heredan a todos los folders, proyectos y recursos, incluidos los que se creen en el futuro.\n\n🎯 Tip de examen Digital Leader\n\nSi aparecen frases como:\n\nFuture projects\nFuture departments\nOrganization-wide\nGovernance\nCompliance\n\nPiensa inmediatamente:\n\n➡️ Organization Policy en el nivel más alto posible.",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi aparecen frases como:\n\nFuture projects\nFuture departments\nOrganization-wide\nGovernance\nCompliance\n\nPiensa inmediatamente:\n\n➡️ Organization Policy en el nivel más alto posible."
+  },
+  {
+    "id": "cca34e98-8922-4eaa-8510-65dadf812881",
+    "topic": "Migración a Google Cloud",
+    "prompt": "Tu plataforma de educación en línea, LearnFast, está migrando su sistema de gestión de cursos a Google Cloud.\n\nComo parte del proyecto, necesita transferir su base de datos activa, actualmente alojada en otro proveedor cloud, hacia Cloud SQL (MySQL).\n\nLa migración debe:\n\n✅ Minimizar la interrupción para estudiantes y profesores.\n\n✅ Mantener los datos seguros durante la transferencia.\n\n¿Qué solución debería utilizar LearnFast?",
+    "options": [
+      {
+        "id": "cca34e98-8922-4eaa-8510-65dadf812881-A",
+        "text": "BigQuery Data Transfer Service"
+      },
+      {
+        "id": "cca34e98-8922-4eaa-8510-65dadf812881-B",
+        "text": "MySQL batch insert"
+      },
+      {
+        "id": "cca34e98-8922-4eaa-8510-65dadf812881-C",
+        "text": "Database Migration Service"
+      },
+      {
+        "id": "cca34e98-8922-4eaa-8510-65dadf812881-D",
+        "text": "Cloud Composer"
+      }
+    ],
+    "correctOptionId": "cca34e98-8922-4eaa-8510-65dadf812881-C",
+    "justification": "Fue creado exactamente para este escenario.\n\nPermite:\n\nBase de datos origen\n          ↓\nReplicación continua\n          ↓\nCloud SQL\n\nCon mínimo impacto para los usuarios.\n\nConcepto clave\n\nDatabase Migration Service permite migrar bases de datos hacia Cloud SQL con mínima interrupción y replicación continua.\n\n🎯 Tip de examen Digital Leader\n\nSi aparecen frases como:\n\nMigrate database\nMinimal downtime\nCloud SQL\nSecure migration\nReplication\n\nPiensa inmediatamente en:\n\n➡️ Database Migration Service (DMS)",
+    "studyTip": "🎯 Tip de examen Digital Leader\n\nSi aparecen frases como:\n\nMigrate database\nMinimal downtime\nCloud SQL\nSecure migration\nReplication\n\nPiensa inmediatamente en:\n\n➡️ Database Migration Service (DMS)"
+  },
+  {
+    "id": "ae80886a-571c-49d1-aa1c-ee878e30737a",
+    "topic": "Migración y Modernización",
+    "prompt": "Tu plataforma de videojuegos online, GamerHaven, ejecuta actualmente la mayoría de sus servicios en un centro de datos local (on-premises).\n\nEstos servicios corren sobre:\n\nMáquinas virtuales (VMs).\nUn hipervisor.\nLinux y Windows Server.\n\nComo parte de la transformación digital, quieres:\n\n✅ Modernizar los servicios.\n\n✅ Adoptar tecnologías cloud-native.\n\n✅ Migrar las cargas de trabajo a Google Cloud.\n\n✅ Mejorar escalabilidad y rendimiento.\n\n¿Qué deberías hacer?",
+    "options": [
+      {
+        "id": "ae80886a-571c-49d1-aa1c-ee878e30737a-A",
+        "text": "Exportar las VMs en formato VMDK e importarlas a Compute Engine."
+      },
+      {
+        "id": "ae80886a-571c-49d1-aa1c-ee878e30737a-B",
+        "text": "Exportar las VMs en formato VMDK e importarlas a Google Cloud VMware Engine."
+      },
+      {
+        "id": "ae80886a-571c-49d1-aa1c-ee878e30737a-C",
+        "text": "Migrar las cargas usando Migrate for Compute Engine."
+      },
+      {
+        "id": "ae80886a-571c-49d1-aa1c-ee878e30737a-D",
+        "text": "Migrar las cargas usando Migrate for Anthos."
+      }
+    ],
+    "correctOptionId": "ae80886a-571c-49d1-aa1c-ee878e30737a-C",
+    "justification": "Cuando la explicación oficial y la teoría parecen chocar:\n\nEn Digital Leader suele ganar el servicio más directo y sencillo.\n\nLa pregunta habla principalmente de:\n\nMigrar VMs on-premises a Google Cloud\n\nPor lo tanto:\n\n✅ Respuesta de examen: C. Migrate for Compute Engine\n\naunque la frase \"cloud-native technologies\" haga pensar inicialmente en Anthos.",
+    "studyTip": "Cuando la explicación oficial y la teoría parecen chocar:\n\nEn Digital Leader suele ganar el servicio más directo y sencillo.\n\nLa pregunta habla principalmente de:\n\nMigrar VMs on-premises a Google Cloud\n\nPor lo tanto:\n\n✅ Respuesta de examen: C. Migrate for Compute Engine\n\naunque la frase \"cloud-native technologies\" haga pensar inicialmente en Anthos."
+  },
+  {
+    "id": "239223e3-ea8e-466a-8b64-e92fef6a5fc3",
+    "topic": "Google Cloud Support Plans",
+    "prompt": "Imagina que Healthly, una nueva aplicación de telemedicina, está lanzando su primera versión pública en Google Cloud.\n\nLa aplicación es crítica tanto para la empresa como para sus usuarios, ya que proporciona servicios de salud esenciales y requiere un SLA de 2 horas para incidentes técnicos.\n\n¿Cómo debería configurar Healthly sus servicios de soporte para minimizar costos mientras cumple este requisito?",
+    "options": [
+      {
+        "id": "239223e3-ea8e-466a-8b64-e92fef6a5fc3-A",
+        "text": "Contratar Premium Support"
+      },
+      {
+        "id": "239223e3-ea8e-466a-8b64-e92fef6a5fc3-B",
+        "text": "Contratar Enhanced Support"
+      },
+      {
+        "id": "239223e3-ea8e-466a-8b64-e92fef6a5fc3-C",
+        "text": "Contratar Standard Support"
+      },
+      {
+        "id": "239223e3-ea8e-466a-8b64-e92fef6a5fc3-D",
+        "text": "Contratar Basic Support"
+      }
+    ],
+    "correctOptionId": "239223e3-ea8e-466a-8b64-e92fef6a5fc3-B",
+    "justification": "Ofrece tiempos de respuesta adecuados para cargas de trabajo de producción.\n\nCumple el SLA requerido sin llegar al costo de Premium.\n\nEs el equilibrio correcto entre:\n\n✅ Soporte rápido\n\n✅ Menor costo\n\n\nConcepto clave\n\nEnhanced Support suele ser la opción adecuada cuando se requieren tiempos de respuesta rápidos para aplicaciones en producción sin asumir el costo de Premium Support.\n\n🎯 Tip Digital Leader\n\nCuando veas:\n\nMeet the requirement\n+\nMinimize cost\n\nNo elijas la opción más potente.\n\nElige la opción mínima que satisface la necesidad.",
+    "studyTip": "🎯 Tip Digital Leader\n\nCuando veas:\n\nMeet the requirement\n+\nMinimize cost\n\nNo elijas la opción más potente.\n\nElige la opción mínima que satisface la necesidad."
+  },
+  {
+    "id": "17d6f8a6-f9f8-4170-9b64-8f42520c8185",
+    "topic": "Datos e Inteligencia Artificial",
+    "prompt": "¿Qué funcionalidad de la aplicación de streaming de música \"MelodyCloud\" permite desarrollar modelos de Machine Learning utilizando Standard SQL directamente sobre el Data Warehouse de la aplicación?",
+    "options": [
+      {
+        "id": "17d6f8a6-f9f8-4170-9b64-8f42520c8185-A",
+        "text": "BigQuery ML"
+      },
+      {
+        "id": "17d6f8a6-f9f8-4170-9b64-8f42520c8185-B",
+        "text": "TensorFlow"
+      },
+      {
+        "id": "17d6f8a6-f9f8-4170-9b64-8f42520c8185-C",
+        "text": "AutoML Tables"
+      },
+      {
+        "id": "17d6f8a6-f9f8-4170-9b64-8f42520c8185-D",
+        "text": "Cloud Bigtable ML"
+      }
+    ],
+    "correctOptionId": "17d6f8a6-f9f8-4170-9b64-8f42520c8185-A",
+    "justification": "Fue creada exactamente para:\n\n✅ Construir modelos ML\n\n✅ Utilizando SQL\n\n✅ Directamente sobre datos almacenados en BigQuery\n\nConcepto clave\n\nBigQuery ML permite crear y ejecutar modelos de Machine Learning usando SQL directamente sobre los datos almacenados en BigQuery.\n\n\n\n🎯 Tip Digital Leader\n\nMemoriza esta asociación:\n\nPalabra clave\tRespuesta\nML + SQL\tBigQuery ML\nML + Código Python\tTensorFlow\nML sin experiencia técnica\tAutoML\nAnalytics Warehouse\tBigQuery",
+    "studyTip": "Regla de examen\n\nSi la pregunta menciona crear modelos de Machine Learning usando SQL directamente sobre un Data Warehouse, la respuesta correcta es BigQuery ML."
   }
 ]
